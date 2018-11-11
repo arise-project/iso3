@@ -1,5 +1,8 @@
-/AstNeo4jConnector/.vs/*
-/AstNeo4jConnector/AstNeo4jConnector/bin/*
-/AstNeo4jConnector/AstNeo4jConnector/obj/*
-/AstNeo4jConnector/AstNeo4jConnector/*.user
-/AstNeo4jConnector/AstTests/obj
+/AstArangoDbConnector/.vs/*
+/AstGraphDbConnector/AstArangoDbConnector/bin/*
+/AstGraphDbConnector/AstArangoDbConnector/obj/*
+/AstGraphDbConnector/AstArangoDbConnector/*.user
+/AstGraphDbConnector/AstTests/obj
+/AstGraphDbConnector/.vs/AstGraphDBConnector/DesignTimeBuild
+/AstGraphDbConnector/.vs/AstGraphDBConnector/v15
+/AstGraphDbConnector/AstTests/bin/Debug/netcoreapp2.1
