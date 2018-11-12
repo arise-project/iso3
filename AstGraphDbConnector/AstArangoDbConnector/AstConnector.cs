@@ -15,12 +15,6 @@ namespace AstArangoDbConnector
             public int Age;
         }
 
-
-        public AstConnector()
-        {
-            
-        }
-
         public async Task CreatePerson()
         {
             using (var db = new ArangoDatabase(new DatabaseSharedSetting
