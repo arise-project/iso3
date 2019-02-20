@@ -9,4 +9,8 @@
     <ProjectReference Include="..\AstArangoDbConnector\AstArangoDbConnector.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="2.10.0" />
+  </ItemGroup>
+
 </Project>
