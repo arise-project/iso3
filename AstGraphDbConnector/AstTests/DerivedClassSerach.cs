@@ -45,7 +45,7 @@ namespace AstTests
                 .GetTypes()
                 .Where(t =>
                     t != baseType &&
-                    t.IsSubclassOf(baseType) && t != typeof(System.Object)
+                    t.IsSubclassOf(baseType) && t != typeof(System.Object) //https://theburningmonk.com/2011/03/type-issubclssof-and-type-isassignablefrom/
                     ).ToList();
 
         }
