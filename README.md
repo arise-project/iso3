@@ -6,6 +6,10 @@ isomorphic source code analyse and synthesis
 [Static analysis of a code in a graph database ](https://greenspector.com/en/articles/2017-06-12-analyse-statique-code-bdd-orientee-graphe/)
 [Getting Started C# Syntax Analysis](https://github.com/dotnet/roslyn/wiki/Getting-Started-C%23-Syntax-Analysis)
 [ArangoDB Graphs](https://docs.arangodb.com/3.3/Manual/Graphs/)
+[cudaHopfield](https://github.com/dariosharp/cudaHopfield)
+[PlaidML](https://www.intel.ai/plaidml)
+[Что такое логическое программирование и зачем оно нам нужно](https://habr.com/ru/post/322900/)
+[Использование графов для решения разреженных систем линейных уравнений](https://habr.com/ru/post/438716/)
 
 arangodb
 127.0.0.1:8529
