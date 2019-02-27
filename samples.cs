@@ -73,7 +73,7 @@ Given nums = [2, 7, 11, 15], target = 9,
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
     
-  public class Solution {
+ public class Solution {
     public int[] TwoSum(int[] nums, int target) {
         if(nums == null)
         {
@@ -82,24 +82,23 @@ return [0, 1].
         Dictionary<int, HashSet<int>> ind = new Dictionary<int, HashSet<int>>();
         for(int i =0; i < nums.Length; i++)
         {
-            if(nums[i] <= target)
-            {
-                int sub = (int)Math.Abs(nums[i] - target);
-                if(ind.ContainsKey(nums[i]))
+            int a = Math.Abs(nums[i]);
+            int sub = (int)Math.Abs(nums[i] -target);
+                if(ind.ContainsKey(a))
                 { 
-                    if(!ind[nums[i]].Contains(i))
+                    if(!ind[a].Contains(i) && nums[ind[a].First()] + nums[i] == target)
                     {
-                        ind[nums[i]].Add(i);
+                        ind[a].Add(i);
                     }
                 }
                 else
                 {
-                    ind[nums[i]] = new HashSet<int>{ i };
+                    ind[a] = new HashSet<int>{ i };
                 }
                    
                 if(ind.ContainsKey(sub))
                 { 
-                    if(!ind[sub].Contains(i))
+                    if(!ind[sub].Contains(i) && nums[ind[sub].First()] + nums[i] == target)
                     {
                         ind[sub].Add(i);
                     }
@@ -107,8 +106,7 @@ return [0, 1].
                 else
                 {
                     ind[sub] = new HashSet<int>{ i };
-                }
-            }            
+                }           
         }
                    
         foreach(int num in ind.Keys)
