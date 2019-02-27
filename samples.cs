@@ -67,22 +67,7 @@ public class Solution {
 }
 
 
-1. Two Sum
-Easy
-
-9876
-
-320
-
-Favorite
-
-Share
-Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-
-You may assume that each input would have exactly one solution, and you may not use the same element twice.
-
-Example:
-
+Two Sum
 Given nums = [2, 7, 11, 15], target = 9,
 
 Because nums[0] + nums[1] = 2 + 7 = 9,
@@ -90,28 +75,38 @@ return [0, 1].
     
   public class Solution {
     public int[] TwoSum(int[] nums, int target) {
-        Dictionary<int, List<int>> ind = new Dictionary<int, List<int>>();
+        if(nums == null)
+        {
+            return null;
+        }
+        Dictionary<int, HashSet<int>> ind = new Dictionary<int, HashSet<int>>();
         for(int i =0; i < nums.Length; i++)
         {
-            if(nums[i] < target)
+            if(nums[i] <= target)
             {
                 int sub = (int)Math.Abs(nums[i] - target);
                 if(ind.ContainsKey(nums[i]))
                 { 
-                    ind[nums[i]].Add(i);
+                    if(!ind[nums[i]].Contains(i))
+                    {
+                        ind[nums[i]].Add(i);
+                    }
                 }
                 else
                 {
-                    ind[nums[i]] = new List<int>{ i };
+                    ind[nums[i]] = new HashSet<int>{ i };
                 }
                    
                 if(ind.ContainsKey(sub))
                 { 
-                    ind[sub].Add(i);
+                    if(!ind[sub].Contains(i))
+                    {
+                        ind[sub].Add(i);
+                    }
                 }
                 else
                 {
-                    ind[sub] = new List<int>{ i };
+                    ind[sub] = new HashSet<int>{ i };
                 }
             }            
         }
