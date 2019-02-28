@@ -154,3 +154,63 @@ public class Solution
     }
     
 }
+
+
+public class GCD 
+{        
+    public int generalizedGCD(int num, int[] arr)
+    {
+        int [] sort = arr;
+        System.Array.Sort(sort);
+        
+        int mean = 0;
+        for(int i =0; i< sort.Length;i++)
+        {
+            if(sort[i] * 2 > sort[sort.Length -1])
+            {
+                if(i > 0)
+                {
+                    mean = sort[i-1];   
+                }
+                break;
+            }
+        }
+        
+        System.Collections.Generic.List<int> div = new System.Collections.Generic.List<int>();
+        if(mean > 0)
+        {
+            for(int j = 2; j <= mean / 2; j++)
+            {
+                if((mean / j) * j == mean && sort[0] >= j)
+                {
+                    div.Add(j);
+                }
+            }
+        }
+        
+        div.Add(mean);
+        
+        div.Reverse();
+        
+        for(int i =0; i < div.Count; i++)
+        {
+            bool found = true;
+            for(int j = 0; j < sort.Length;j++)
+            {
+                if((sort[j] / div[i]) * div[i] != sort[j])
+                {
+                    found = false;
+                    break;
+                }
+            }
+            
+            if(found)
+            {
+                return div[i];
+            }
+        }
+        
+        return 1;
+        
+    }
+}
