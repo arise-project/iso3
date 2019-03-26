@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using AstArangoDbConnector;
+using AstArangoDbConnector.Syntax;
 using Microsoft.CodeAnalysis.CSharp;
 
 namespace AstTests
@@ -61,6 +63,7 @@ namespace AstTests
     public static class SyntaxNodesTree{
         public static void Print()
         {
+            AstConnector connector = new AstConnector();
             var types = DerivedClassSearch.FindAllDerivedTypes<CSharpSyntaxNode>();            
 
             string intent = "\t";
@@ -78,6 +81,17 @@ namespace AstTests
                 }
                 Console.WriteLine(t.Type.FullName);
                 var derived = DerivedClassSearch.FindAllDerivedTypes(t.Type);
+                
+                if(derived.Any())
+                {
+                    BaseSyntax baseSyntax = new BaseSyntax { Name = t.Type.Name, FullName = t.Type.FullName };
+                    connector.CreateSyntaxAbstractDefinition(baseSyntax);
+                }
+                else
+                {
+                    ConcreteSyntax concreteSyntax = new ConcreteSyntax {Name = t.Type.Name, FullName = t.Type.FullName, ParentFullName = t.Type.BaseType.FullName };
+                    connector.CreateSyntaxConcreteDefinition(concreteSyntax);
+                }
 
                 foreach(Type d in derived)
                 {

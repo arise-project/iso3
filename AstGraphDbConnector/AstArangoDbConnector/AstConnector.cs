@@ -1,4 +1,5 @@
 ﻿using ArangoDB.Client;
+using AstArangoDbConnector.Syntax;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +16,47 @@ namespace AstArangoDbConnector
             public int Age;
         }
 
+        public void CreateSyntaxAbstractDefinition(BaseSyntax syntax)
+        {
+            using (var db = new ArangoDatabase(new DatabaseSharedSetting
+            {
+                Url = "http://localhost:8529",
+                Database = "AstGraphDBConnector",
+                Credential = new System.Net.NetworkCredential("root", "12345")
+            }))
+            {
+                if(!db.ListCollections().Any(c => c.Name == "BaseSyntax")){
+                    db.CreateCollection("BaseSyntax");
+                }
+
+
+                if(db.Query<BaseSyntax>().Where(p => AQL.Contains(p.FullName, syntax.FullName)).Count() == 0)
+                {
+                    db.Insert<BaseSyntax>(syntax);
+                }               
+            }
+        }
+
+        public void CreateSyntaxConcreteDefinition(ConcreteSyntax syntax)
+        {
+            using (var db = new ArangoDatabase(new DatabaseSharedSetting
+            {
+                Url = "http://localhost:8529",
+                Database = "AstGraphDBConnector",
+                Credential = new System.Net.NetworkCredential("root", "12345")
+            }))
+            {
+                if(!db.ListCollections().Any(c => c.Name == "ConcreteSyntax")){
+                    db.CreateCollection("ConcreteSyntax");
+                }
+
+                if(db.Query<ConcreteSyntax>().Where(p => AQL.Contains(p.FullName, syntax.FullName)).Count() == 0)
+                {
+                    db.Insert<ConcreteSyntax>(syntax);
+                }
+            }
+        }
+
         public async Task CreatePerson()
         {
             using (var db = new ArangoDatabase(new DatabaseSharedSetting
@@ -24,7 +66,10 @@ namespace AstArangoDbConnector
                 Credential = new System.Net.NetworkCredential("root", "12345")
             }))
             {
-                db.CreateCollection("Person");
+                if(!db.ListCollections().Any(c => c.Name == "Person")){
+                    db.CreateCollection("Person");
+                }
+                
                 ///////////////////// insert and update documents /////////////////////////
                 var person = new Person { Name = "raoof hojat", Age = 26 };
 
