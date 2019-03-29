@@ -6,6 +6,8 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Collections.Generic;
+using AstRoslyn;
+using AstArangoDbConnector.Syntax;
 
 namespace AstTests
 {
@@ -18,13 +20,17 @@ namespace AstTests
             //roslyn
             //https://github.com/dotnet/roslyn/blob/master/src/Compilers/CSharp/Portable/Syntax/SyntaxKind.cs
 
-            string programText = File.ReadAllText("Program.cs");
-            SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
-            CompilationUnitSyntax root = tree.GetCompilationUnitRoot();
-            var writer = new ConsoleDumpWalker();
-            writer.Visit(root);
+            //string programText = File.ReadAllText("Program.cs");
+            //SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
+            //CompilationUnitSyntax root = tree.GetCompilationUnitRoot();
+            //var writer = new ConsoleDumpWalker();
+            //writer.Visit(root);
 
-            SyntaxNodesTree.Print();
+            var connector = new AstConnector();
+            var typesTree = new SyntaxNodesTree();
+            typesTree.AcceptBaseSyntaxWritter(new BaseSyntaxVisitor(connector));
+            typesTree.AcceptConcreteSyntaxWritter(new ConcreteSyntaxVisitor(connector));
+            typesTree.CreateTypesTree();
         }
     }
 }
