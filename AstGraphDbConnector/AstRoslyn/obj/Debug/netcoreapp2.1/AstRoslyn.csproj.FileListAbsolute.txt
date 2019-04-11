@@ -1,0 +1,12 @@
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/bin/Debug/netcoreapp2.1/AstRoslyn.deps.json
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/bin/Debug/netcoreapp2.1/AstRoslyn.dll
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/bin/Debug/netcoreapp2.1/AstRoslyn.pdb
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/bin/Debug/netcoreapp2.1/AstShared.dll
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/bin/Debug/netcoreapp2.1/AstShared.pdb
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/obj/Debug/netcoreapp2.1/AstRoslyn.csprojAssemblyReference.cache
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/obj/Debug/netcoreapp2.1/AstRoslyn.csproj.CoreCompileInputs.cache
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/obj/Debug/netcoreapp2.1/AstRoslyn.AssemblyInfoInputs.cache
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/obj/Debug/netcoreapp2.1/AstRoslyn.AssemblyInfo.cs
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/obj/Debug/netcoreapp2.1/AstRoslyn.csproj.CopyComplete
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/obj/Debug/netcoreapp2.1/AstRoslyn.dll
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstRoslyn/obj/Debug/netcoreapp2.1/AstRoslyn.pdb

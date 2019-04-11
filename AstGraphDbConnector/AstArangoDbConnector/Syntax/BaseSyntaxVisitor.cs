@@ -17,6 +17,7 @@ namespace AstArangoDbConnector.Syntax
         {
             BaseSyntax baseSyntax = new BaseSyntax { Name = t.Name, FullName = t.FullName };
             _connector.CreateSyntaxAbstractDefinition(baseSyntax);
+            _connector.CreateSyntaxCollection(baseSyntax);
         }
     }
 }

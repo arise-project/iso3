@@ -18,6 +18,7 @@ namespace AstArangoDbConnector.Syntax
         {
             ConcreteSyntax concreteSyntax = new ConcreteSyntax { Name = t.Name, FullName = t.FullName, ParentFullName = t.BaseType.FullName };
             _connector.CreateSyntaxConcreteDefinition(concreteSyntax);
+            _connector.CreateSyntaxCollection(concreteSyntax);
         }
     }
 }

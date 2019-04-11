@@ -1,0 +1,9 @@
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstShared/bin/Debug/netcoreapp2.1/AstShared.deps.json
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstShared/bin/Debug/netcoreapp2.1/AstShared.dll
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstShared/bin/Debug/netcoreapp2.1/AstShared.pdb
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstShared/obj/Debug/netcoreapp2.1/AstShared.csprojAssemblyReference.cache
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstShared/obj/Debug/netcoreapp2.1/AstShared.csproj.CoreCompileInputs.cache
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstShared/obj/Debug/netcoreapp2.1/AstShared.AssemblyInfoInputs.cache
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstShared/obj/Debug/netcoreapp2.1/AstShared.AssemblyInfo.cs
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstShared/obj/Debug/netcoreapp2.1/AstShared.dll
+/home/eugene/Projects/iso3/AstGraphDbConnector/AstShared/obj/Debug/netcoreapp2.1/AstShared.pdb
