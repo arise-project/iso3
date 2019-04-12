@@ -16,6 +16,28 @@ namespace AstArangoDbConnector
             public int Age;
         }
 
+        public void CreateCodeVertex(CodeSyntax code)
+        {
+            using (var db = new ArangoDatabase(new DatabaseSharedSetting
+            {
+                Url = "http://localhost:8529",
+                Database = "AstGraphDBConnector",
+                Credential = new System.Net.NetworkCredential("root", "12345")
+            }))
+            {
+                //error codes https://docs.arangodb.com/3.3/Manual/Appendix/ErrorCodes.html
+                string name = code.TypeName.Replace("Microsoft.CodeAnalysis.CSharp.","").Replace("Microsoft.CodeAnalysis.","").Replace(".","Dot");
+                if(db.ListCollections().Any(c => c.Name == name)){
+                    //todo: generate type with collection name  and insert.
+                    //db.Collection().Insert<CodeSyntax>()
+                }
+                else
+                {
+                    throw new NotSupportedException(code.TypeName);
+                }
+            }
+        }
+
         public void CreateSyntaxCollection(BaseSyntax syntax)
         {
             using (var db = new ArangoDatabase(new DatabaseSharedSetting

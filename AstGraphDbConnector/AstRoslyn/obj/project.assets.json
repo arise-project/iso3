@@ -1521,6 +1521,9 @@
       "AstShared/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Microsoft.CodeAnalysis.CSharp": "2.10.0"
+        },
         "compile": {
           "bin/placeholder/AstShared.dll": {}
         },

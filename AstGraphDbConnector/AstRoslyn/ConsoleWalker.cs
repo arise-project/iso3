@@ -1,11 +1,19 @@
 using System;
 using System.Linq;
+using AstShared;
 using Microsoft.CodeAnalysis;
 
 namespace AstRoslyn
 {
-    class ConsoleDumpWalker : SyntaxWalker
+    public class ConsoleDumpWalker : SyntaxWalker
     {
+        private ICodeVisitor _codeVisitor;
+
+        public ConsoleDumpWalker(ICodeVisitor codeVisitor)
+        {
+            _codeVisitor = codeVisitor;
+        }
+        
         public override void Visit(SyntaxNode node)
         {
             int padding = node.Ancestors().Count();
@@ -16,6 +24,9 @@ namespace AstRoslyn
                                     " " + node.GetType().ToString() + " " + (node as  SyntaxNode).GetText();
             //Write the line
             System.Console.WriteLine(line);
+
+            _codeVisitor.Visit(node);
+
             base.Visit(node);
         }
 

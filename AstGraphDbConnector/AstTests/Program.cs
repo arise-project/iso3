@@ -20,17 +20,20 @@ namespace AstTests
             //roslyn
             //https://github.com/dotnet/roslyn/blob/master/src/Compilers/CSharp/Portable/Syntax/SyntaxKind.cs
 
-            //string programText = File.ReadAllText("Program.cs");
-            //SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
-            //CompilationUnitSyntax root = tree.GetCompilationUnitRoot();
-            //var writer = new ConsoleDumpWalker();
-            //writer.Visit(root);
+            
 
             var connector = new AstConnector();
-            var typesTree = new SyntaxNodesTree();
-            typesTree.AcceptBaseSyntaxWritter(new BaseSyntaxVisitor(connector));
-            typesTree.AcceptConcreteSyntaxWritter(new ConcreteSyntaxVisitor(connector));
-            typesTree.CreateTypesTree();
+
+            // var typesTree = new SyntaxNodesTree();
+            // typesTree.AcceptBaseSyntaxWritter(new BaseSyntaxVisitor(connector));
+            // typesTree.AcceptConcreteSyntaxWritter(new ConcreteSyntaxVisitor(connector));
+            // typesTree.CreateTypesTree();
+
+            string programText = File.ReadAllText("Program.cs");
+            SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
+            CompilationUnitSyntax root = tree.GetCompilationUnitRoot();
+            var writer = new ConsoleDumpWalker(new CodeSyntaxVisitor(connector));
+            writer.Visit(root);
         }
     }
 }

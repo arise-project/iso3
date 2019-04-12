@@ -897,6 +897,9 @@
         }
       },
       "AstShared/1.0.0": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.CSharp": "2.10.0"
+        },
         "runtime": {
           "AstShared.dll": {}
         }
