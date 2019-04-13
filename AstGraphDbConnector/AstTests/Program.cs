@@ -13,6 +13,8 @@ namespace AstTests
 {
     class Program
     {
+        private const string Path = "Program.cs";
+
         static void Main(string[] args)
         {
             //new AstConnector().CreatePerson().ConfigureAwait(false).GetAwaiter().GetResult();
@@ -29,9 +31,9 @@ namespace AstTests
             // typesTree.AcceptConcreteSyntaxWritter(new ConcreteSyntaxVisitor(connector));
             // typesTree.CreateTypesTree();
 
-            string programText = File.ReadAllText("Program.cs");
+            string programText = File.ReadAllText(path: Path);
             SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
-            CompilationUnitSyntax root = tree.GetCompilationUnitRoot();
+            var root = tree.GetCompilationUnitRoot();
             var writer = new ConsoleDumpWalker(new CodeSyntaxVisitor(connector));
             writer.Visit(root);
         }
