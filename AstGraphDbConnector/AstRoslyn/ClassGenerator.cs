@@ -1,7 +1,10 @@
 using System;
+using System.IO;
 using System.Linq;
+using System.Text;
 using AstShared;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.Editing;
 
 namespace AstRoslyn
 {

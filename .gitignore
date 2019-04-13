@@ -6,3 +6,7 @@
 /AstGraphDbConnector/.vs/AstGraphDBConnector/DesignTimeBuild
 /AstGraphDbConnector/.vs/AstGraphDBConnector/v15
 /AstGraphDbConnector/AstTests/bin/Debug/netcoreapp2.1
+/AstGraphDbConnector/AstRoslyn/obj
+/AstGraphDbConnector/AstShared/bin/Debug/netcoreapp2.1
+/AstGraphDbConnector/AstShared/obj
+/AstGraphDbConnector/AstRoslyn/bin/Debug/netcoreapp2.1
