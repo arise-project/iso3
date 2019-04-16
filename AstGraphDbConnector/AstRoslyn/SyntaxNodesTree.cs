@@ -10,6 +10,7 @@ namespace AstRoslyn
     {
         ISyntaxVisitor _baseSyntaxVisitor;
         ISyntaxVisitor _concreteSyntaxVisitor;
+        ISyntaxVisitor _syntaxGeneratorVisitor;
 
         public void AcceptBaseSyntaxWritter(ISyntaxVisitor visitor)
         {
@@ -19,6 +20,11 @@ namespace AstRoslyn
         public void AcceptConcreteSyntaxWritter(ISyntaxVisitor visitor)
         {
             _concreteSyntaxVisitor = visitor;
+        }
+
+        public void AcceptSyntaxGenerator(ISyntaxVisitor visitor)
+        {
+            _syntaxGeneratorVisitor = visitor;
         }
 
         public void CreateTypesTree()
@@ -49,6 +55,8 @@ namespace AstRoslyn
                 {
                     _concreteSyntaxVisitor.Visit(t.Type);
                 }
+
+                _syntaxGeneratorVisitor.Visit(t.Type);
 
                 foreach (Type d in derived)
                 {
