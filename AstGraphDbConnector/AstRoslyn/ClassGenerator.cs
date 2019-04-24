@@ -10,7 +10,7 @@ namespace AstRoslyn
 {
     public class ClassGenerator
     {
-        public void CreateClassInFolder(string folder, string className, string baseClassName)
+        public void CreateClassInFolder(string folder, string className, string baseClassName, string @namespace)
         {
             // Get a workspace
             var workspace = new AdhocWorkspace();
@@ -77,23 +77,21 @@ namespace AstRoslyn
             var classDefinition = generator.ClassDeclaration(
               className, typeParameters: null,
               accessibility: Accessibility.Public,
-              modifiers: DeclarationModifiers.Abstract,
+              modifiers: DeclarationModifiers.Sealed,
               baseType: baseNode,
               members: null);
 
             // Declare a namespace
-            var namespaceDeclaration = generator.NamespaceDeclaration("MyTypes", classDefinition);
+            var namespaceDeclaration = generator.NamespaceDeclaration(@namespace, classDefinition);
 
             // Get a CompilationUnit (code file) for the generated code
             var newNode = generator.CompilationUnit(usingDirectives, namespaceDeclaration).
               NormalizeWhitespace();
 
 
-            StringBuilder sb = new StringBuilder();
-            using (StringWriter writer = new StringWriter(sb))
+            using (TextWriter writer = File.CreateText(Path.Combine(folder,$"{className}.cs")))
             {
                 newNode.WriteTo(writer);
-                Console.Write(writer.ToString());
             };
         }
     }

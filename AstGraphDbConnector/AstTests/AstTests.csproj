@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="3.0.0" />
     <ProjectReference Include="..\AstArangoDbConnector\AstArangoDbConnector.csproj" />
     <ProjectReference Include="..\AstRoslyn\AstRoslyn.csproj" />
   </ItemGroup>
