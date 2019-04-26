@@ -26,17 +26,17 @@ namespace AstTests
 
             var connector = new AstConnector();
 
-            var typesTree = new SyntaxNodesTree();
-            typesTree.AcceptBaseSyntaxWritter(new BaseSyntaxVisitor(connector));
-            typesTree.AcceptConcreteSyntaxWritter(new ConcreteSyntaxVisitor(connector));
-            typesTree.AcceptSyntaxGenerator(new SyntaxGeneratorVisitor());
-            typesTree.CreateTypesTree();
+            // var typesTree = new SyntaxNodesTree();
+            // typesTree.AcceptBaseSyntaxWritter(new BaseSyntaxVisitor(connector));
+            // typesTree.AcceptConcreteSyntaxWritter(new ConcreteSyntaxVisitor(connector));
+            // typesTree.AcceptSyntaxGenerator(new SyntaxGeneratorVisitor());
+            // typesTree.CreateTypesTree();
 
-            // string programText = File.ReadAllText(path: Path);
-            // SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
-            // var root = tree.GetCompilationUnitRoot();
-            // var writer = new ConsoleDumpWalker(new CodeSyntaxVisitor(connector));
-            // writer.Visit(root);
+            string programText = File.ReadAllText(path: Path);
+            SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
+            var root = tree.GetCompilationUnitRoot();
+            var writer = new ConsoleDumpWalker(new CodeSyntaxVisitor(connector));
+            writer.Visit(root);
         }
     }
 }

@@ -1,4 +1,5 @@
 using ArangoDB.Client;
+using Microsoft.CodeAnalysis;
 
 namespace AstArangoDbConnector.Syntax
 {
@@ -11,5 +12,7 @@ namespace AstArangoDbConnector.Syntax
         public string Text { get; set; }
 
         public string TypeName { get; set; }
+
+        public SyntaxNode Node {get;set;}
     }
 }

@@ -2,6 +2,7 @@
 using AstArangoDbConnector.Syntax;
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace AstArangoDbConnector
@@ -28,8 +29,14 @@ namespace AstArangoDbConnector
                 //error codes https://docs.arangodb.com/3.3/Manual/Appendix/ErrorCodes.html
                 string name = code.TypeName.Replace("Microsoft.CodeAnalysis.CSharp.","").Replace("Microsoft.CodeAnalysis.","").Replace(".","Dot");
                 if(db.ListCollections().Any(c => c.Name == name)){
-                    //todo: generate type with collection name  and insert.
-                    //db.Collection().Insert<CodeSyntax>()
+                    MethodInfo method = typeof(ArangoDatabase).GetMethod("Insert");
+                    var collectionType = Type.GetType($"AstArangoDbConnector.Syntax.{name}");
+                    MethodInfo generic = method.MakeGenericMethod(collectionType);
+                    Console.WriteLine(string.Join(",", generic.GetParameters().Select(p => p.Name).ToArray())); 
+                    var item = Activator.CreateInstance(collectionType);
+                    var baseItem = (BaseSyntaxCollection)item;
+                    baseItem.Text = code.Text;
+                    generic.Invoke(db, new [] { item, null, null });
                 }
                 else
                 {
