@@ -27,16 +27,17 @@ namespace AstArangoDbConnector
             }))
             {
                 //error codes https://docs.arangodb.com/3.3/Manual/Appendix/ErrorCodes.html
-                string name = code.TypeName.Replace("Microsoft.CodeAnalysis.CSharp.","").Replace("Microsoft.CodeAnalysis.","").Replace(".","Dot");
-                if(db.ListCollections().Any(c => c.Name == name)){
+                string name = code.TypeName.Replace("Microsoft.CodeAnalysis.CSharp.", "").Replace("Microsoft.CodeAnalysis.", "").Replace(".", "Dot");
+                if (db.ListCollections().Any(c => c.Name == name))
+                {
                     MethodInfo method = typeof(ArangoDatabase).GetMethod("Insert");
                     var collectionType = Type.GetType($"AstArangoDbConnector.Syntax.{name}");
                     MethodInfo generic = method.MakeGenericMethod(collectionType);
-                    Console.WriteLine(string.Join(",", generic.GetParameters().Select(p => p.Name).ToArray())); 
+                    Console.WriteLine(string.Join(",", generic.GetParameters().Select(p => p.Name).ToArray()));
                     var item = Activator.CreateInstance(collectionType);
                     var baseItem = (BaseSyntaxCollection)item;
                     baseItem.Text = code.Text;
-                    generic.Invoke(db, new [] { item, null, null });
+                    generic.Invoke(db, new[] { item, null, null });
                 }
                 else
                 {
@@ -55,8 +56,9 @@ namespace AstArangoDbConnector
             }))
             {
                 //error codes https://docs.arangodb.com/3.3/Manual/Appendix/ErrorCodes.html
-                string name = syntax.FullName.Replace("Microsoft.CodeAnalysis.CSharp.","").Replace("Microsoft.CodeAnalysis.","").Replace(".","Dot");
-                if(!db.ListCollections().Any(c => c.Name == name)){
+                string name = syntax.FullName.Replace("Microsoft.CodeAnalysis.CSharp.", "").Replace("Microsoft.CodeAnalysis.", "").Replace(".", "Dot");
+                if (!db.ListCollections().Any(c => c.Name == name))
+                {
                     db.CreateCollection(name);
                 }
             }
@@ -71,15 +73,16 @@ namespace AstArangoDbConnector
                 Credential = new System.Net.NetworkCredential("root", "12345")
             }))
             {
-                if(!db.ListCollections().Any(c => c.Name == "BaseSyntax")){
+                if (!db.ListCollections().Any(c => c.Name == "BaseSyntax"))
+                {
                     db.CreateCollection("BaseSyntax");
                 }
 
 
-                if(db.Query<BaseSyntax>().Where(p => AQL.Contains(p.FullName, syntax.FullName)).Count() == 0)
+                if (db.Query<BaseSyntax>().Where(p => AQL.Contains(p.FullName, syntax.FullName)).Count() == 0)
                 {
                     db.Insert<BaseSyntax>(syntax);
-                }               
+                }
             }
         }
 
@@ -92,11 +95,12 @@ namespace AstArangoDbConnector
                 Credential = new System.Net.NetworkCredential("root", "12345")
             }))
             {
-                if(!db.ListCollections().Any(c => c.Name == "ConcreteSyntax")){
+                if (!db.ListCollections().Any(c => c.Name == "ConcreteSyntax"))
+                {
                     db.CreateCollection("ConcreteSyntax");
                 }
 
-                if(db.Query<ConcreteSyntax>().Where(p => AQL.Contains(p.FullName, syntax.FullName)).Count() == 0)
+                if (db.Query<ConcreteSyntax>().Where(p => AQL.Contains(p.FullName, syntax.FullName)).Count() == 0)
                 {
                     db.Insert<ConcreteSyntax>(syntax);
                 }
@@ -112,10 +116,11 @@ namespace AstArangoDbConnector
                 Credential = new System.Net.NetworkCredential("root", "12345")
             }))
             {
-                if(!db.ListCollections().Any(c => c.Name == "Person")){
+                if (!db.ListCollections().Any(c => c.Name == "Person"))
+                {
                     db.CreateCollection("Person");
                 }
-                
+
                 ///////////////////// insert and update documents /////////////////////////
                 var person = new Person { Name = "raoof hojat", Age = 26 };
 

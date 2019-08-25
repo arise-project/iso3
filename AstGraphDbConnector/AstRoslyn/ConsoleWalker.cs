@@ -1,7 +1,7 @@
-using System;
-using System.Linq;
 using AstShared;
 using Microsoft.CodeAnalysis;
+using System;
+using System.Linq;
 
 namespace AstRoslyn
 {
@@ -13,7 +13,7 @@ namespace AstRoslyn
         {
             _codeVisitor = codeVisitor;
         }
-        
+
         public override void Visit(SyntaxNode node)
         {
             int padding = node.Ancestors().Count();
@@ -21,7 +21,7 @@ namespace AstRoslyn
             string prepend = node.ChildNodes().Any() ? "[-]" : "[.]";
             //Get the type of the node
             string line = new String(' ', padding) + prepend +
-                                    " " + node.GetType().ToString() + " " + (node as  SyntaxNode).GetText();
+                                    " " + node.GetType().ToString() + " " + (node as SyntaxNode).GetText();
             //Write the line
             System.Console.WriteLine(line);
 

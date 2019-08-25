@@ -1,13 +1,9 @@
 ﻿using AstArangoDbConnector;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
-using AstRoslyn;
 using AstArangoDbConnector.Syntax;
+using AstRoslyn;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using System.IO;
 
 namespace AstTests
 {
@@ -22,7 +18,7 @@ namespace AstTests
             //roslyn
             //https://github.com/dotnet/roslyn/blob/master/src/Compilers/CSharp/Portable/Syntax/SyntaxKind.cs
 
-            
+
 
             var connector = new AstConnector();
 

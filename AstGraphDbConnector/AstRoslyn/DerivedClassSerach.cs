@@ -28,9 +28,9 @@ namespace AstRoslyn
         public static List<Type> FindAllDerivedTypes(Type type)
         {
             List<Type> result = new List<Type>();
-            foreach(Assembly a in AppDomain.CurrentDomain.GetAssemblies())
+            foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies())
             {
-                var d = FindAllDerivedTypes(a, type);                
+                var d = FindAllDerivedTypes(a, type);
                 result.AddRange(d);
             }
 

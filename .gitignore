@@ -10,3 +10,8 @@
 /AstGraphDbConnector/AstShared/bin/Debug/netcoreapp2.1
 /AstGraphDbConnector/AstShared/obj
 /AstGraphDbConnector/AstRoslyn/bin/Debug/netcoreapp2.1
+/AstGraphDbConnector/.vs/AstGraphDBConnector/v16/*.suo
+/AstGraphDbConnector/.vs/AstGraphDBConnector/v16/Server/sqlite3/*.lock
+/AstGraphDbConnector/.vs/AstGraphDBConnector/v16/Server/sqlite3/*.ide
+/AstGraphDbConnector/.vs/AstGraphDBConnector/v16/Server/sqlite3/*.ide-shm
+/AstGraphDbConnector/.vs/AstGraphDBConnector/v16/Server/sqlite3/*.ide-wal
