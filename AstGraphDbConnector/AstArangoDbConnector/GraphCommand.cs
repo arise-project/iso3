@@ -1,10 +1,45 @@
 ﻿using ArangoDB.Client.Data;
 using ArangoDB.Client.Examples.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
 namespace ArangoDB.Client.Examples.Graphs
 {
+    public class Person
+    {
+        public string Key { get; set; }
+
+        public string Name { get; set; }
+
+        public int Age { get; set; }
+
+        [DocumentProperty(Identifier = IdentifierType.Handle)]
+        public string Id { get; set; }
+
+        public override string ToString()
+        {
+            return Name?.ToString();
+        }
+    }
+
+    [CollectionProperty(Naming = NamingConvention.ToCamelCase, CollectionName = "hosts")]
+    public class Host
+    {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        [DocumentProperty(Identifier = IdentifierType.Key)]
+        public string Key { get; set; }
+
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string Ip { get; set; }
+
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string Name { get; set; }
+
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public IList<string> Tags { get; set; }
+    }
+
     public class GraphCommand
     {
         ArangoDatabase db = new ArangoDatabase(new DatabaseSharedSetting
