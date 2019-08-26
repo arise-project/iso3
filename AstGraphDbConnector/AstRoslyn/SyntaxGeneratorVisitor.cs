@@ -3,7 +3,7 @@ using System;
 
 namespace AstRoslyn
 {
-    public class SyntaxGeneratorVisitor : ISyntaxVisitor
+    public class SyntaxGeneratorVisitor : ISyntaxGeneratorVisitor
     {
         private readonly ClassGenerator _classGenerator = new ClassGenerator();
 

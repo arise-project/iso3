@@ -7,6 +7,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
+    <PackageReference Include="StructureMap.Microsoft.DependencyInjection" Version="2.0.0" />
     <PackageReference Include="YamlDotNet.NetCore" Version="1.0.0" />
     <ProjectReference Include="..\AstArangoDbConnector\AstArangoDbConnector.csproj" />
     <ProjectReference Include="..\AstRoslyn\AstRoslyn.csproj" />

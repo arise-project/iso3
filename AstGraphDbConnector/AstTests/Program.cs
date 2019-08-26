@@ -1,8 +1,11 @@
 ﻿using AstArangoDbConnector;
 using AstArangoDbConnector.Syntax;
 using AstRoslyn;
+using AstShared;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using YamlDotNet.Serialization;
@@ -17,10 +20,19 @@ namespace AstTests
 
         static void Main(string[] args)
         {
+            var sc = new ServiceCollection();
+            sc.AddLogging(lb => lb.AddConsole())
+                .Configure<LoggerFilterOptions>(options => options.MinLevel = LogLevel.Information);
+
+            var sp = Infrastructure.Init(sc);
+            var logger = sp.GetService<ILogger<Program>>();
+
+            logger.Log(LogLevel.Information, "Starting application");
+
             PrintConfig();
             Console.WriteLine("database|manage|analyse");
             string commad = Console.ReadLine();
-            switch(commad.Trim().ToLower())
+            switch (commad.Trim().ToLower())
             {
                 case "database":
                     DatabaseCommands();
@@ -32,6 +44,8 @@ namespace AstTests
                     AnalyseCommads();
                     break;
             }
+
+            logger.LogDebug("All done!");
         }
 
         private static void AnalyseCommads()

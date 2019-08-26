@@ -3,7 +3,7 @@ using System;
 
 namespace AstArangoDbConnector.Syntax
 {
-    public class ConcreteSyntaxVisitor : ISyntaxVisitor
+    public class ConcreteSyntaxVisitor : IConcreteSyntaxVisitor
     {
         AstConnector _connector;
 

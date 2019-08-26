@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace AstRoslyn
 {
-    public class ConsoleDumpWalker : SyntaxWalker
+    public class ConsoleDumpWalker : SyntaxWalker, ISyntaxWalker
     {
         private ICodeVisitor _codeVisitor;
 

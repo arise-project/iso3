@@ -1,10 +1,11 @@
+using AstShared;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Editing;
 using System.IO;
 
 namespace AstRoslyn
 {
-    public class ClassGenerator
+    public class ClassGenerator : IClassGenerator
     {
         public void CreateClassInFolder(string folder, string className, string baseClassName, string @namespace)
         {

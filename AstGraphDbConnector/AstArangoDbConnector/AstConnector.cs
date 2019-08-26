@@ -1,5 +1,6 @@
 ﻿using ArangoDB.Client;
 using AstArangoDbConnector.Syntax;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -26,7 +27,9 @@ namespace AstArangoDbConnector
                     MethodInfo generic = method.MakeGenericMethod(collectionType);
                     Console.WriteLine(string.Join(",", generic.GetParameters().Select(p => p.Name).ToArray()));
                     var item = Activator.CreateInstance(collectionType);
+
                     var baseItem = (BaseSyntaxCollection)item;
+                    
                     baseItem.Text = code.Text;
                     generic.Invoke(db, new[] { item, null, null });
                 }
