@@ -6,25 +6,16 @@ using System.Linq;
 
 namespace AstRoslyn
 {
-    public class SyntaxNodesTree
+    public class SyntaxNodesToCollections : ISyntaxNodesToCollections
     {
-        ISyntaxVisitor _baseSyntaxVisitor;
-        ISyntaxVisitor _concreteSyntaxVisitor;
-        ISyntaxVisitor _syntaxGeneratorVisitor;
+        IBaseSyntaxVisitor _baseSyntaxVisitor;
+        IConcreteSyntaxVisitor _concreteSyntaxVisitor;
 
-        public void AcceptBaseSyntaxWritter(ISyntaxVisitor visitor)
+        public SyntaxNodesToCollections(IBaseSyntaxVisitor baseSyntaxVisitor,
+            IConcreteSyntaxVisitor concreteSyntaxVisitor)
         {
-            _baseSyntaxVisitor = visitor;
-        }
-
-        public void AcceptConcreteSyntaxWritter(ISyntaxVisitor visitor)
-        {
-            _concreteSyntaxVisitor = visitor;
-        }
-
-        public void AcceptSyntaxGenerator(ISyntaxVisitor visitor)
-        {
-            _syntaxGeneratorVisitor = visitor;
+            _baseSyntaxVisitor = baseSyntaxVisitor;
+            _concreteSyntaxVisitor = concreteSyntaxVisitor;
         }
 
         public void CreateTypesTree()
@@ -55,8 +46,6 @@ namespace AstRoslyn
                 {
                     _concreteSyntaxVisitor.Visit(t.Type);
                 }
-
-                _syntaxGeneratorVisitor.Visit(t.Type);
 
                 foreach (Type d in derived)
                 {

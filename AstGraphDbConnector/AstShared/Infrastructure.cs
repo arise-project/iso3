@@ -26,6 +26,9 @@ namespace AstShared
                     _.AddAllTypesOf<IConcreteSyntaxVisitor>();
                     _.AddAllTypesOf<ISyntaxGeneratorVisitor>();
                     _.AddAllTypesOf<ISyntaxWalker>();
+                    _.AddAllTypesOf<IApp>();
+                    _.AddAllTypesOf<ISyntaxNodesToClasses>();
+                    _.AddAllTypesOf<ISyntaxNodesToCollections>();
                 });
 
                 //Populate the container using the service collection

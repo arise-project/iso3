@@ -1,23 +1,12 @@
-﻿using AstArangoDbConnector;
-using AstArangoDbConnector.Syntax;
-using AstRoslyn;
-using AstShared;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
+﻿using AstShared;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
-using System.IO;
-using YamlDotNet.Serialization;
 
 namespace AstTests
 {
     class Program
     {
-        private const string ConfigPath = @"AstTests.yaml";
-
-        private static AstConnector connector = new AstConnector();
-
         static void Main(string[] args)
         {
             var sc = new ServiceCollection();
@@ -26,89 +15,38 @@ namespace AstTests
 
             var sp = Infrastructure.Init(sc);
             var logger = sp.GetService<ILogger<Program>>();
+            var app = sp.GetService<IApp>();
 
             logger.Log(LogLevel.Information, "Starting application");
 
-            PrintConfig();
+            app.PrintConfig();
             Console.WriteLine("database|manage|analyse");
             string commad = Console.ReadLine();
             switch (commad.Trim().ToLower())
             {
                 case "database":
-                    DatabaseCommands();
+                    DatabaseCommands(app);
                     break;
                 case "manage":
-                    ManageCommands();
+                    ManageCommands(app);
                     break;
                 case "analyse":
-                    AnalyseCommads();
+                    AnalyseCommads(app);
                     break;
             }
 
             logger.LogDebug("All done!");
         }
 
-        private static void AnalyseCommads()
-        {
-            Console.WriteLine("csharp-file");
-            string commad = Console.ReadLine();
-            switch (commad.Trim().ToLower())
-            {
-                case "csharp-file":
-                    AnalyseCSharpFile();
-                    break;
-            }
-        }
 
-        private static void AnalyseCSharpFile()
-        {
-            Console.WriteLine("File:");
-            string file = Console.ReadLine();
-            string programText = File.ReadAllText(file);
-            SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
-            var root = tree.GetCompilationUnitRoot();
-            var writer = new ConsoleDumpWalker(new CodeSyntaxVisitor(connector));
-            writer.Visit(root);
-        }
-
-        private static void ManageCommands()
-        {
-            Console.WriteLine("create-collections|create-collection-classes");
-            string commad = Console.ReadLine();
-            switch (commad.Trim().ToLower())
-            {
-                case "create-collections":
-                    CreateArangoDbSyntaxCollections();
-                    break;
-                case "create-collection-classes":
-                    CreateArangoDbSyntaxClasses();
-                    break;
-            }
-        }
-
-        private static void CreateArangoDbSyntaxClasses()
-        {
-            var typesTree = new SyntaxNodesTree();
-            typesTree.AcceptSyntaxGenerator(new SyntaxGeneratorVisitor());
-            typesTree.CreateTypesTree();
-        }
-
-        private static void CreateArangoDbSyntaxCollections()
-        {
-            var typesTree = new SyntaxNodesTree();
-            typesTree.AcceptBaseSyntaxWritter(new BaseSyntaxVisitor(connector));
-            typesTree.AcceptConcreteSyntaxWritter(new ConcreteSyntaxVisitor(connector));
-            typesTree.CreateTypesTree();
-        }
-
-        private static void DatabaseCommands()
+        private static void DatabaseCommands(IApp app)
         {
             Console.WriteLine("configure|create|statistics|delete");
             string commad = Console.ReadLine();
             switch (commad.Trim().ToLower())
             {
                 case "configure":
-                    ConfigureArabgoDbDatabase();
+                    app.ConfigureArabgoDbDatabase();
                     break;
                 case "create":
                     break;
@@ -119,39 +57,31 @@ namespace AstTests
             }
         }
 
-        private static void ConfigureArabgoDbDatabase()
+        private static void AnalyseCommads(IApp app)
         {
-            Config c = new Config();
-            Console.WriteLine("Server:");
-            c.ArangoDbServer = Console.ReadLine();
-            Console.WriteLine("Database:");
-            c.ArangoDbDatabse = Console.ReadLine();
-            Console.WriteLine("User:");
-            c.ArangoDbUser = Console.ReadLine();
-            Console.WriteLine("Password:");
-            c.ArangoDbPassword = Console.ReadLine();
-            var s = new Serializer();
-            File.WriteAllText(ConfigPath, s.Serialize(c));
+            Console.WriteLine("csharp-file");
+            string commad = Console.ReadLine();
+            switch (commad.Trim().ToLower())
+            {
+                case "csharp-file":
+                    app.AnalyseCSharpFile();
+                    break;
+            }
         }
 
-        private static void PrintConfig()
+        private static void ManageCommands(IApp app)
         {
-            if(!File.Exists(ConfigPath))
+            Console.WriteLine("create-collections|create-collection-classes");
+            string commad = Console.ReadLine();
+            switch (commad.Trim().ToLower())
             {
-                return;
+                case "create-collections":
+                    app.CreateArangoDbSyntaxCollections();
+                    break;
+                case "create-collection-classes":
+                    app.CreateArangoDbSyntaxClasses();
+                    break;
             }
-
-            var d = new Deserializer();
-            Config c;
-            using (var s = new StreamReader(ConfigPath))
-            {
-                c = d.Deserialize<Config>(s);
-            }
-
-            Console.WriteLine("==================================");
-            Console.WriteLine("Server:{0}", c.ArangoDbServer);
-            Console.WriteLine("Database:{0}", c.ArangoDbDatabse);
-            Console.WriteLine("==================================");
         }
     }
 }
