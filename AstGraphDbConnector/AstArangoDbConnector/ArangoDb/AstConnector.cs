@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace AstArangoDbConnector
 {
-    public class AstConnector
+    public class AstConnector : IAstConnector
     {
         public void CreateCodeVertex(CodeSyntax code)
         {
