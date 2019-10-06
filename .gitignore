@@ -15,3 +15,15 @@
 /AstGraphDbConnector/.vs/AstGraphDBConnector/v16/Server/sqlite3/*.ide
 /AstGraphDbConnector/.vs/AstGraphDBConnector/v16/Server/sqlite3/*.ide-shm
 /AstGraphDbConnector/.vs/AstGraphDBConnector/v16/Server/sqlite3/*.ide-wal
+/AstGraphDbConnector/AstDomain/bin/Debug/netstandard2.0
+/AstGraphDbConnector/AstDomain/obj/Debug/netstandard2.0
+/AstGraphDbConnector/AstDomain/obj/AstDomain.csproj.nuget.cache
+/AstGraphDbConnector/AstDomain/obj/AstDomain.csproj.nuget.dgspec.json
+/AstGraphDbConnector/AstDomain/obj/AstDomain.csproj.nuget.g.props
+/AstGraphDbConnector/AstDomain/obj/AstDomain.csproj.nuget.g.targets
+/AstGraphDbConnector/AstDomain/obj/project.assets.json
+/GPUOpenCLProject1/.vs/GPUOpenCLProject1/v15
+/GPUOpenCLProject1/Debug
+/GPUOpenCLProject1/GPUOpenCLProject1/Debug
+/GPUOpenCLProject1/GPUOpenCLProject1/GPUOpenCLProject1.vcxproj.filters
+/GPUOpenCLProject1/GPUOpenCLProject1/GPUOpenCLProject1.vcxproj.user
