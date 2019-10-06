@@ -4,7 +4,7 @@ using System;
 
 namespace AstShared
 {
-    public class Infrastructure
+    public class InfrastructureShared
     {
         //https://andrewlock.net/using-dependency-injection-in-a-net-core-console-application/
         //https://andrewlock.net/getting-started-with-structuremap-in-asp-net-core/

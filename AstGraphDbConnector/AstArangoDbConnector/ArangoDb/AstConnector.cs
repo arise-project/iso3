@@ -1,5 +1,8 @@
 ﻿using ArangoDB.Client;
 using AstArangoDbConnector.Syntax;
+using AstDomain;
+using AstShared;
+using AutoMapper;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -8,8 +11,16 @@ namespace AstArangoDbConnector
 {
     public class AstConnector : IAstConnector
     {
-        public void CreateCodeVertex(CodeSyntax code)
+        private readonly IMapper _mapper;
+
+        public AstConnector(IMapper mapper)
         {
+            _mapper = mapper;
+        }
+
+        public void CreateCodeVertex(CodeSyntaxEntity codeEntity)
+        {
+            var code = _mapper.Map<CodeSyntax>(codeEntity);
             using (var db = new ArangoDatabase(new DatabaseSharedSetting
             {
                 Url = "http://localhost:8529",
@@ -39,8 +50,9 @@ namespace AstArangoDbConnector
             }
         }
 
-        public void CreateSyntaxCollection(BaseSyntax syntax)
+        public void CreateSyntaxCollection(BaseSyntaxEntity syntaxEntity)
         {
+            var syntax = _mapper.Map<BaseSyntax>(syntaxEntity);
             using (var db = new ArangoDatabase(new DatabaseSharedSetting
             {
                 Url = "http://localhost:8529",
@@ -57,8 +69,9 @@ namespace AstArangoDbConnector
             }
         }
 
-        public void CreateSyntaxAbstractDefinition(BaseSyntax syntax)
+        public void CreateSyntaxAbstractDefinition(BaseSyntaxEntity syntaxEntity)
         {
+            var syntax = _mapper.Map<BaseSyntax>(syntaxEntity);
             using (var db = new ArangoDatabase(new DatabaseSharedSetting
             {
                 Url = "http://localhost:8529",
@@ -79,8 +92,9 @@ namespace AstArangoDbConnector
             }
         }
 
-        public void CreateSyntaxConcreteDefinition(ConcreteSyntax syntax)
+        public void CreateSyntaxConcreteDefinition(ConcreteSyntaxEntity syntaxEntity)
         {
+            var syntax = _mapper.Map<ConcreteSyntax>(syntaxEntity);
             using (var db = new ArangoDatabase(new DatabaseSharedSetting
             {
                 Url = "http://localhost:8529",

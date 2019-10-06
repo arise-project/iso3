@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2050
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AstTests", "AstTests\AstTests.csproj", "{4702E544-D906-4C72-B844-8B0A16C2FDF7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AstArangoDbConnector", "AstArangoDbConnector\AstArangoDbConnector.csproj", "{D2E5DF7D-22EF-4AB5-804E-F2FBF477D674}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstRoslyn", "AstRoslyn\AstRoslyn.csproj", "{A5D4E437-A9FF-4013-A225-76939E391F09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AstRoslyn", "AstRoslyn\AstRoslyn.csproj", "{A5D4E437-A9FF-4013-A225-76939E391F09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstShared", "AstShared\AstShared.csproj", "{62DE953B-76AD-445E-86F2-64CEBED50372}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AstShared", "AstShared\AstShared.csproj", "{62DE953B-76AD-445E-86F2-64CEBED50372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstDomain", "AstDomain\AstDomain.csproj", "{CFAC4B49-9DD3-484F-B341-487831C7C085}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{62DE953B-76AD-445E-86F2-64CEBED50372}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62DE953B-76AD-445E-86F2-64CEBED50372}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62DE953B-76AD-445E-86F2-64CEBED50372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFAC4B49-9DD3-484F-B341-487831C7C085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFAC4B49-9DD3-484F-B341-487831C7C085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFAC4B49-9DD3-484F-B341-487831C7C085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFAC4B49-9DD3-484F-B341-487831C7C085}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

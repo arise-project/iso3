@@ -1,4 +1,5 @@
-﻿using AstShared;
+﻿using AstDomain;
+using AstShared;
 using System;
 
 namespace AstArangoDbConnector.Syntax
@@ -13,7 +14,7 @@ namespace AstArangoDbConnector.Syntax
         }
         public void Visit(Type t)
         {
-            BaseSyntax baseSyntax = new BaseSyntax { Name = t.Name, FullName = t.FullName };
+            BaseSyntaxEntity baseSyntax = new BaseSyntaxEntity { Name = t.Name, FullName = t.FullName };
             _connector.CreateSyntaxAbstractDefinition(baseSyntax);
             _connector.CreateSyntaxCollection(baseSyntax);
         }

@@ -1,18 +1,15 @@
-using AstArangoDbConnector.Syntax;
-using System;
-using System.Linq;
-using System.Reflection;
+using AstDomain;
 
-namespace AstArangoDbConnector
+namespace AstShared
 {
     public interface IAstConnector
     {
-        void CreateCodeVertex(CodeSyntax code);
+        void CreateCodeVertex(CodeSyntaxEntity code);
 
-        void CreateSyntaxCollection(BaseSyntax syntax);
+        void CreateSyntaxCollection(BaseSyntaxEntity syntax);
 
-        void CreateSyntaxAbstractDefinition(BaseSyntax syntax);
+        void CreateSyntaxAbstractDefinition(BaseSyntaxEntity syntax);
 
-        void CreateSyntaxConcreteDefinition(ConcreteSyntax syntax);
+        void CreateSyntaxConcreteDefinition(ConcreteSyntaxEntity syntax);
     }
 }

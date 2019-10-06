@@ -1,3 +1,4 @@
+using AstDomain;
 using AstShared;
 using Microsoft.CodeAnalysis;
 
@@ -14,7 +15,7 @@ namespace AstArangoDbConnector.Syntax
 
         public void Visit(SyntaxNode n)
         {
-            CodeSyntax codeSyntax = new CodeSyntax { Text = n.GetText().ToString(), TypeName = n.GetType().FullName };
+            CodeSyntaxEntity codeSyntax = new CodeSyntaxEntity { Text = n.GetText().ToString(), TypeName = n.GetType().FullName };
             _connector.CreateCodeVertex(codeSyntax);
         }
     }

@@ -1,4 +1,5 @@
-﻿using AstShared;
+﻿using AstArangoDbConnector;
+using AstShared;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,7 +14,8 @@ namespace AstTests
             sc.AddLogging(lb => lb.AddConsole())
                 .Configure<LoggerFilterOptions>(options => options.MinLevel = LogLevel.Information);
 
-            var sp = Infrastructure.Init(sc);
+            InfrastructureAstArangoDbConnector.Init(sc);
+            var sp = InfrastructureShared.Init(sc);
             var logger = sp.GetService<ILogger<Program>>();
             var app = sp.GetService<IApp>();
 
