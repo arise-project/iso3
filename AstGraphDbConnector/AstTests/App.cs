@@ -13,14 +13,12 @@ namespace AstTests
     {
         private const string ConfigPath = @"AstTests.yaml";
 
-        private IAstConnector _astConnector;
         private readonly ISyntaxNodesToClasses _syntaxNodesToClasse;
         private readonly ISyntaxNodesToCollections _syntaxNodesToCollections;
         private readonly ICodeVisitor _codeVisitor;
 
-        public App(IAstConnector astConnector, ISyntaxNodesToClasses syntaxNodesToClasse, ISyntaxNodesToCollections syntaxNodesToCollections, ICodeVisitor codeVisitor)
+        public App(ISyntaxNodesToClasses syntaxNodesToClasse, ISyntaxNodesToCollections syntaxNodesToCollections, ICodeVisitor codeVisitor)
         {
-            _astConnector = astConnector;
             _syntaxNodesToClasse = syntaxNodesToClasse;
             _syntaxNodesToCollections = syntaxNodesToCollections;
             _codeVisitor = codeVisitor;

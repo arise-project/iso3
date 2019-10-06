@@ -6,18 +6,18 @@ namespace AstArangoDbConnector.Syntax
 {
     public class ConcreteSyntaxVisitor : IConcreteSyntaxVisitor
     {
-        AstConnector _connector;
+        private readonly IAstConnector _astConnector;
 
-        public ConcreteSyntaxVisitor(AstConnector connector)
+        public ConcreteSyntaxVisitor(IAstConnector astConnector)
         {
-            _connector = connector;
+            _astConnector = astConnector;
         }
 
         public void Visit(Type t)
         {
             ConcreteSyntaxEntity concreteSyntax = new ConcreteSyntaxEntity { Name = t.Name, FullName = t.FullName, ParentFullName = t.BaseType.FullName };
-            _connector.CreateSyntaxConcreteDefinition(concreteSyntax);
-            _connector.CreateSyntaxCollection(concreteSyntax);
+            _astConnector.CreateSyntaxConcreteDefinition(concreteSyntax);
+            _astConnector.CreateSyntaxCollection(concreteSyntax);
         }
     }
 }

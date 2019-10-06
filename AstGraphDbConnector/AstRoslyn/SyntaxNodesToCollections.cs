@@ -16,7 +16,7 @@ namespace AstRoslyn
 
         public void CreateTypesTree()
         {
-            var types = DerivedClassSearch.FindAllDerivedTypes<CSharpSyntaxNode>();
+            var types = DerivedClassSearchHelper.FindAllDerivedTypes<CSharpSyntaxNode>();
 
             string intent = "\t";
             Stack<TypeIntent> pull = new Stack<TypeIntent>();
@@ -32,7 +32,7 @@ namespace AstRoslyn
                     Console.Write(intent);
                 }
                 Console.WriteLine(t.Type.FullName);
-                var derived = DerivedClassSearch.FindAllDerivedTypes(t.Type);
+                var derived = DerivedClassSearchHelper.FindAllDerivedTypes(t.Type);
 
                 if (_syntaxGeneratorVisitor != null)
                 {

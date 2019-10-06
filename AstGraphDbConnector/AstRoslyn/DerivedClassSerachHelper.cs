@@ -6,7 +6,7 @@ using System.Reflection;
 namespace AstRoslyn
 {
     //https://stackoverflow.com/questions/2362580/discovering-derived-types-using-reflection
-    public static class DerivedClassSearch
+    public static class DerivedClassSearchHelper
     {
         public static List<Type> FindAllDerivedTypes<T>()
         {
