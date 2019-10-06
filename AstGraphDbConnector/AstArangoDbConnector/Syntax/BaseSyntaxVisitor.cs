@@ -12,11 +12,11 @@ namespace AstArangoDbConnector.Syntax
         {
             _astConnector = astConnector;
         }
-        public void Visit(Type t)
+        public void Visit(Config config, Type t)
         {
             BaseSyntaxEntity baseSyntax = new BaseSyntaxEntity { Name = t.Name, FullName = t.FullName };
-            _astConnector.CreateSyntaxAbstractDefinition(baseSyntax);
-            _astConnector.CreateSyntaxCollection(baseSyntax);
+            _astConnector.CreateSyntaxAbstractDefinition(config, baseSyntax);
+            _astConnector.CreateSyntaxCollection(config, baseSyntax);
         }
     }
 }

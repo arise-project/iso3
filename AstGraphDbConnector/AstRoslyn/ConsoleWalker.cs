@@ -1,3 +1,4 @@
+using AstDomain;
 using AstShared;
 using Microsoft.CodeAnalysis;
 using System;
@@ -14,21 +15,20 @@ namespace AstRoslyn
             _codeVisitor = codeVisitor;
         }
 
-        public override void Visit(SyntaxNode node)
+        public void Visit(Config config, SyntaxNode node)
         {
             int padding = node.Ancestors().Count();
             //To identify leaf nodes vs nodes with children
             string prepend = node.ChildNodes().Any() ? "[-]" : "[.]";
             //Get the type of the node
-            string line = new String(' ', padding) + prepend +
+            string line = new string(' ', padding) + prepend +
                                     " " + node.GetType().ToString() + " " + (node as SyntaxNode).GetText();
             //Write the line
             System.Console.WriteLine(line);
 
-            _codeVisitor.Visit(node);
+            _codeVisitor.Visit(config, node);
 
             base.Visit(node);
         }
-
     }
 }

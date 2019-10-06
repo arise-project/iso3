@@ -1,9 +1,10 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using AstDomain;
+using Microsoft.CodeAnalysis;
 
 namespace AstShared
 {
     public interface ISyntaxWalker
     {
-        void Visit(SyntaxNode node);
+        void Visit(Config config, SyntaxNode node);
     }
 }

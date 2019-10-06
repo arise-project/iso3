@@ -13,11 +13,11 @@ namespace AstArangoDbConnector.Syntax
             _astConnector = astConnector;
         }
 
-        public void Visit(Type t)
+        public void Visit(Config config, Type t)
         {
             ConcreteSyntaxEntity concreteSyntax = new ConcreteSyntaxEntity { Name = t.Name, FullName = t.FullName, ParentFullName = t.BaseType.FullName };
-            _astConnector.CreateSyntaxConcreteDefinition(concreteSyntax);
-            _astConnector.CreateSyntaxCollection(concreteSyntax);
+            _astConnector.CreateSyntaxConcreteDefinition(config, concreteSyntax);
+            _astConnector.CreateSyntaxCollection(config, concreteSyntax);
         }
     }
 }

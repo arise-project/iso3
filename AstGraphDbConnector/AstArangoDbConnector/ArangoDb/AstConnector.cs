@@ -18,15 +18,20 @@ namespace AstArangoDbConnector
             _mapper = mapper;
         }
 
-        public void CreateCodeVertex(CodeSyntaxEntity codeEntity)
+        private ArangoDatabase CreateDatabase(Config config)
+        {
+            return new ArangoDatabase(new DatabaseSharedSetting
+            {
+                Url = config.ArangoDbServer,
+                Database = config.ArangoDbDatabse,
+                Credential = new System.Net.NetworkCredential(config.ArangoDbUser, config.ArangoDbPassword)
+            });
+        }
+
+        public void CreateCodeVertex(Config config, CodeSyntaxEntity codeEntity)
         {
             var code = _mapper.Map<CodeSyntax>(codeEntity);
-            using (var db = new ArangoDatabase(new DatabaseSharedSetting
-            {
-                Url = "http://localhost:8529",
-                Database = "AstGraphDBConnector",
-                Credential = new System.Net.NetworkCredential("root", "12345")
-            }))
+            using (var db = CreateDatabase(config))
             {
                 //error codes https://docs.arangodb.com/3.3/Manual/Appendix/ErrorCodes.html
                 string name = code.TypeName.Replace("Microsoft.CodeAnalysis.CSharp.", "").Replace("Microsoft.CodeAnalysis.", "").Replace(".", "Dot");
@@ -50,15 +55,10 @@ namespace AstArangoDbConnector
             }
         }
 
-        public void CreateSyntaxCollection(BaseSyntaxEntity syntaxEntity)
+        public void CreateSyntaxCollection(Config config, BaseSyntaxEntity syntaxEntity)
         {
             var syntax = _mapper.Map<BaseSyntax>(syntaxEntity);
-            using (var db = new ArangoDatabase(new DatabaseSharedSetting
-            {
-                Url = "http://localhost:8529",
-                Database = "AstGraphDBConnector",
-                Credential = new System.Net.NetworkCredential("root", "12345")
-            }))
+            using (var db = CreateDatabase(config))
             {
                 //error codes https://docs.arangodb.com/3.3/Manual/Appendix/ErrorCodes.html
                 string name = syntax.FullName.Replace("Microsoft.CodeAnalysis.CSharp.", "").Replace("Microsoft.CodeAnalysis.", "").Replace(".", "Dot");
@@ -69,15 +69,10 @@ namespace AstArangoDbConnector
             }
         }
 
-        public void CreateSyntaxAbstractDefinition(BaseSyntaxEntity syntaxEntity)
+        public void CreateSyntaxAbstractDefinition(Config config, BaseSyntaxEntity syntaxEntity)
         {
             var syntax = _mapper.Map<BaseSyntax>(syntaxEntity);
-            using (var db = new ArangoDatabase(new DatabaseSharedSetting
-            {
-                Url = "http://localhost:8529",
-                Database = "AstGraphDBConnector",
-                Credential = new System.Net.NetworkCredential("root", "12345")
-            }))
+            using (var db = CreateDatabase(config))
             {
                 if (!db.ListCollections().Any(c => c.Name == "BaseSyntax"))
                 {
@@ -92,15 +87,10 @@ namespace AstArangoDbConnector
             }
         }
 
-        public void CreateSyntaxConcreteDefinition(ConcreteSyntaxEntity syntaxEntity)
+        public void CreateSyntaxConcreteDefinition(Config config, ConcreteSyntaxEntity syntaxEntity)
         {
             var syntax = _mapper.Map<ConcreteSyntax>(syntaxEntity);
-            using (var db = new ArangoDatabase(new DatabaseSharedSetting
-            {
-                Url = "http://localhost:8529",
-                Database = "AstGraphDBConnector",
-                Credential = new System.Net.NetworkCredential("root", "12345")
-            }))
+            using (var db = CreateDatabase(config))
             {
                 if (!db.ListCollections().Any(c => c.Name == "ConcreteSyntax"))
                 {

@@ -4,12 +4,12 @@ namespace AstShared
 {
     public interface IAstConnector
     {
-        void CreateCodeVertex(CodeSyntaxEntity code);
+        void CreateCodeVertex(Config config, CodeSyntaxEntity code);
 
-        void CreateSyntaxCollection(BaseSyntaxEntity syntax);
+        void CreateSyntaxCollection(Config config, BaseSyntaxEntity syntax);
 
-        void CreateSyntaxAbstractDefinition(BaseSyntaxEntity syntax);
+        void CreateSyntaxAbstractDefinition(Config config, BaseSyntaxEntity syntax);
 
-        void CreateSyntaxConcreteDefinition(ConcreteSyntaxEntity syntax);
+        void CreateSyntaxConcreteDefinition(Config config, ConcreteSyntaxEntity syntax);
     }
 }

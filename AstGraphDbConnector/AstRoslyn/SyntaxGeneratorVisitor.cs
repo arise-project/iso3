@@ -1,3 +1,4 @@
+using AstDomain;
 using AstShared;
 using System;
 
@@ -7,10 +8,10 @@ namespace AstRoslyn
     {
         private readonly ClassGenerator _classGenerator = new ClassGenerator();
 
-        public void Visit(Type t)
+        public void Visit(Config config, Type t)
         {
             _classGenerator.CreateClassInFolder(
-                @"/home/eugene/Projects/iso3/AstGraphDbConnector/AstArangoDbConnector/SyntaxCollections",
+                config.SyntaxCollectionClassesFolder,
                 t.FullName.Replace("Microsoft.CodeAnalysis.CSharp.", "").Replace("Microsoft.CodeAnalysis.", "").Replace(".", "Dot"),
                 "BaseSyntaxCollection",
                 "AstArangoDbConnector.Syntax");

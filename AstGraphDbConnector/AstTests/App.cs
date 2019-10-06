@@ -1,4 +1,4 @@
-﻿using AstArangoDbConnector;
+﻿using AstDomain;
 using AstRoslyn;
 using AstShared;
 using Microsoft.CodeAnalysis;
@@ -13,15 +13,21 @@ namespace AstTests
     {
         private const string ConfigPath = @"AstTests.yaml";
 
-        private readonly ISyntaxNodesToClasses _syntaxNodesToClasse;
+        private readonly ISyntaxNodesToClasses _syntaxNodesToClasses;
         private readonly ISyntaxNodesToCollections _syntaxNodesToCollections;
         private readonly ICodeVisitor _codeVisitor;
+        private readonly IConnectionFactory _connectionFactory;
 
-        public App(ISyntaxNodesToClasses syntaxNodesToClasse, ISyntaxNodesToCollections syntaxNodesToCollections, ICodeVisitor codeVisitor)
+        public App(
+            ISyntaxNodesToClasses syntaxNodesToClasse, 
+            ISyntaxNodesToCollections syntaxNodesToCollections, 
+            ICodeVisitor codeVisitor,
+            IConnectionFactory connectionFactory)
         {
-            _syntaxNodesToClasse = syntaxNodesToClasse;
+            _syntaxNodesToClasses = syntaxNodesToClasse;
             _syntaxNodesToCollections = syntaxNodesToCollections;
             _codeVisitor = codeVisitor;
+            _connectionFactory = connectionFactory;
         }
 
         public void ConfigureArabgoDbDatabase()
@@ -41,17 +47,7 @@ namespace AstTests
 
         public void PrintConfig()
         {
-            if (!File.Exists(ConfigPath))
-            {
-                return;
-            }
-
-            var d = new Deserializer();
-            Config c;
-            using (var s = new StreamReader(ConfigPath))
-            {
-                c = d.Deserialize<Config>(s);
-            }
+            Config c = _connectionFactory.CreateConfig(ConfigPath);
 
             Console.WriteLine("==================================");
             Console.WriteLine("Server:{0}", c.ArangoDbServer);
@@ -61,23 +57,38 @@ namespace AstTests
 
         public void CreateArangoDbSyntaxClasses()
         {
-            _syntaxNodesToClasse.CreateTypesTree();
+            Config c = _connectionFactory.CreateConfig(ConfigPath);
+
+            Console.WriteLine("Destination folder:");
+            c.SyntaxCollectionClassesFolder = Console.ReadLine();
+
+            if(Directory.Exists(c.SyntaxCollectionClassesFolder))
+            {
+                Console.WriteLine("NOT FOUND");
+                return;
+            }
+
+            _syntaxNodesToClasses.CreateTypesTree(c);
         }
 
         public void CreateArangoDbSyntaxCollections()
         {
-            _syntaxNodesToCollections.CreateTypesTree();
+            Config c = _connectionFactory.CreateConfig(ConfigPath);
+
+            _syntaxNodesToCollections.CreateTypesTree(c);
         }
 
         public void AnalyseCSharpFile()
         {
+            Config c = _connectionFactory.CreateConfig(ConfigPath);
+
             Console.WriteLine("File:");
             string file = Console.ReadLine();
             string programText = File.ReadAllText(file);
             SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
             var root = tree.GetCompilationUnitRoot();
             var writer = new ConsoleDumpWalker(_codeVisitor);
-            writer.Visit(root);
+            writer.Visit(c, root);
         }
     }
 }

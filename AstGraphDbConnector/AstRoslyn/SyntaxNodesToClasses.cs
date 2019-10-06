@@ -1,4 +1,5 @@
-﻿using AstShared;
+﻿using AstDomain;
+using AstShared;
 using Microsoft.CodeAnalysis.CSharp;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace AstRoslyn
             _concreteSyntaxVisitor = concreteSyntaxVisitor;
         }
 
-        public void CreateTypesTree()
+        public void CreateTypesTree(Config config)
         {
             var types = DerivedClassSearchHelper.FindAllDerivedTypes<CSharpSyntaxNode>();
 
@@ -40,11 +41,11 @@ namespace AstRoslyn
 
                 if (derived.Any())
                 {
-                    _baseSyntaxVisitor.Visit(t.Type);
+                    _baseSyntaxVisitor.Visit(config, t.Type);
                 }
                 else
                 {
-                    _concreteSyntaxVisitor.Visit(t.Type);
+                    _concreteSyntaxVisitor.Visit(config, t.Type);
                 }
 
                 foreach (Type d in derived)

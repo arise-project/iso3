@@ -13,10 +13,10 @@ namespace AstArangoDbConnector.Syntax
             _astConnector = astConnector;
         }
 
-        public void Visit(SyntaxNode n)
+        public void Visit(Config config, SyntaxNode n)
         {
             CodeSyntaxEntity codeSyntax = new CodeSyntaxEntity { Text = n.GetText().ToString(), TypeName = n.GetType().FullName };
-            _astConnector.CreateCodeVertex(codeSyntax);
+            _astConnector.CreateCodeVertex(config, codeSyntax);
         }
     }
 }

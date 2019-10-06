@@ -1,7 +1,9 @@
-﻿namespace AstShared
+﻿using AstDomain;
+
+namespace AstShared
 {
     public interface ISyntaxNodesToCollections
     {
-        void CreateTypesTree();
+        void CreateTypesTree(Config config);
     }
 }

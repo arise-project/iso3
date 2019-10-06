@@ -1,4 +1,5 @@
-﻿using AstShared;
+﻿using AstDomain;
+using AstShared;
 using Microsoft.CodeAnalysis.CSharp;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace AstRoslyn
             _syntaxGeneratorVisitor = syntaxGeneratorVisitor;
         }
 
-        public void CreateTypesTree()
+        public void CreateTypesTree(Config config)
         {
             var types = DerivedClassSearchHelper.FindAllDerivedTypes<CSharpSyntaxNode>();
 
@@ -36,7 +37,7 @@ namespace AstRoslyn
 
                 if (_syntaxGeneratorVisitor != null)
                 {
-                    _syntaxGeneratorVisitor.Visit(t.Type);
+                    _syntaxGeneratorVisitor.Visit(config, t.Type);
                 }
 
                 foreach (Type d in derived)

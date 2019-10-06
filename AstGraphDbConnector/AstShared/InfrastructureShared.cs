@@ -30,6 +30,7 @@ namespace AstShared
                     _.AddAllTypesOf<ISyntaxNodesToClasses>();
                     _.AddAllTypesOf<ISyntaxNodesToCollections>();
                     _.AddAllTypesOf<IAstConnector>();
+                    _.AddAllTypesOf<IConnectionFactory>();
                 });
 
                 //Populate the container using the service collection

@@ -1,4 +1,4 @@
-﻿namespace AstShared
+﻿namespace AstDomain
 {
     public class Config
     {
@@ -9,5 +9,7 @@
         public string ArangoDbUser { get; set; }
 
         public string ArangoDbPassword { get; set; }
+
+        public string SyntaxCollectionClassesFolder { get; set; }
     }
 }
