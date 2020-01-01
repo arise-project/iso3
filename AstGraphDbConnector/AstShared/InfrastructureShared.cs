@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using StructureMap;
 using System;
+using AstDomain;
 
 namespace AstShared
 {
@@ -31,6 +32,10 @@ namespace AstShared
                     _.AddAllTypesOf<ISyntaxNodesToCollections>();
                     _.AddAllTypesOf<IAstConnector>();
                     _.AddAllTypesOf<IConnectionFactory>();
+                    _.AddAllTypesOf<IRepository<SyntaxCoollectionEntity>>();
+                    _.AddAllTypesOf<IRepository<CodeSyntaxEntity>>();
+                    _.AddAllTypesOf<IRepository<BaseSyntaxEntity>>();
+                    _.AddAllTypesOf<IRepository<ConcreteSyntaxEntity>>();
                 });
 
                 //Populate the container using the service collection

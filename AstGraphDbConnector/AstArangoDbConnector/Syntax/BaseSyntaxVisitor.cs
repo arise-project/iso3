@@ -6,17 +6,24 @@ namespace AstArangoDbConnector.Syntax
 {
     public class BaseSyntaxVisitor : IBaseSyntaxVisitor
     {
-        private readonly IAstConnector _astConnector;
+        private readonly IRepository<BaseSyntaxEntity> _baseSyntaxRepository;
+        private readonly IRepository<SyntaxCoollectionEntity> _syntaxRepository;
 
-        public BaseSyntaxVisitor(IAstConnector astConnector)
+
+        public BaseSyntaxVisitor(IRepository<BaseSyntaxEntity> baseSyntaxRepository,
+            IRepository<SyntaxCoollectionEntity> syntaxRepository)
         {
-            _astConnector = astConnector;
+            _baseSyntaxRepository = baseSyntaxRepository;
+            _syntaxRepository = syntaxRepository;
         }
         public void Visit(Config config, Type t)
         {
             BaseSyntaxEntity baseSyntax = new BaseSyntaxEntity { Name = t.Name, FullName = t.FullName };
-            _astConnector.CreateSyntaxAbstractDefinition(config, baseSyntax);
-            _astConnector.CreateSyntaxCollection(config, baseSyntax);
+            _baseSyntaxRepository.Init(config);
+            _baseSyntaxRepository.Create(baseSyntax);
+            SyntaxCoollectionEntity syntax = new SyntaxCoollectionEntity { Name = t.Name, FullName = t.FullName };
+            _syntaxRepository.Init(config);
+            _syntaxRepository.Create(syntax);
         }
     }
 }

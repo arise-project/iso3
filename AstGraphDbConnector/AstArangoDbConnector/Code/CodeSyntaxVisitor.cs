@@ -6,17 +6,18 @@ namespace AstArangoDbConnector.Syntax
 {
     public class CodeSyntaxVisitor : ICodeVisitor
     {
-        private readonly IAstConnector _astConnector;
+        private readonly IRepository<CodeSyntaxEntity> _codeSyntaxRepository;
 
-        public CodeSyntaxVisitor(IAstConnector astConnector)
+        public CodeSyntaxVisitor(IRepository<CodeSyntaxEntity> codeSyntaxRepository)
         {
-            _astConnector = astConnector;
+            _codeSyntaxRepository = codeSyntaxRepository;
         }
 
         public void Visit(Config config, SyntaxNode n)
         {
             CodeSyntaxEntity codeSyntax = new CodeSyntaxEntity { Text = n.GetText().ToString(), TypeName = n.GetType().FullName };
-            _astConnector.CreateCodeVertex(config, codeSyntax);
+            _codeSyntaxRepository.Init(config);
+            _codeSyntaxRepository.Create(codeSyntax);
         }
     }
 }
