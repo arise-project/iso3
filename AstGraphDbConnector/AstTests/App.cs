@@ -17,17 +17,20 @@ namespace AstTests
         private readonly ISyntaxNodesToCollections _syntaxNodesToCollections;
         private readonly ICodeVisitor _codeVisitor;
         private readonly IConnectionFactory _connectionFactory;
+        private readonly ISyntaxWalker _syntaxWalker;
 
         public App(
             ISyntaxNodesToClasses syntaxNodesToClasse, 
             ISyntaxNodesToCollections syntaxNodesToCollections, 
             ICodeVisitor codeVisitor,
-            IConnectionFactory connectionFactory)
+            IConnectionFactory connectionFactory,
+            ISyntaxWalker syntaxWalker)
         {
             _syntaxNodesToClasses = syntaxNodesToClasse;
             _syntaxNodesToCollections = syntaxNodesToCollections;
             _codeVisitor = codeVisitor;
             _connectionFactory = connectionFactory;
+            _syntaxWalker = syntaxWalker;
         }
 
         public void ConfigureArabgoDbDatabase()
@@ -87,8 +90,7 @@ namespace AstTests
             string programText = File.ReadAllText(file);
             SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
             var root = tree.GetCompilationUnitRoot();
-            var writer = new ConsoleDumpWalker(_codeVisitor);
-            writer.Visit(c, root);
+            _syntaxWalker.Visit(c, root);
         }
     }
 }

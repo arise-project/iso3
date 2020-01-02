@@ -3,16 +3,19 @@ using AstShared;
 using Microsoft.CodeAnalysis;
 using System;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace AstRoslyn
 {
-    public class ConsoleDumpWalker : SyntaxWalker, ISyntaxWalker
+    public class DeepFirstWalker : SyntaxWalker, ISyntaxWalker
     {
-        private ICodeVisitor _codeVisitor;
+        private readonly ICodeVisitor _codeVisitor;
+        private readonly ILogger<DeepFirstWalker> _logger;
 
-        public ConsoleDumpWalker(ICodeVisitor codeVisitor)
+        public DeepFirstWalker(ICodeVisitor codeVisitor, ILogger<DeepFirstWalker> logger)
         {
             _codeVisitor = codeVisitor;
+            _logger = logger;
         }
 
         public void Visit(Config config, SyntaxNode node)
@@ -24,7 +27,7 @@ namespace AstRoslyn
             string line = new string(' ', padding) + prepend +
                                     " " + node.GetType().ToString() + " " + (node as SyntaxNode).GetText();
             //Write the line
-            System.Console.WriteLine(line);
+            _logger.LogDebug(line);
 
             _codeVisitor.Visit(config, node);
 

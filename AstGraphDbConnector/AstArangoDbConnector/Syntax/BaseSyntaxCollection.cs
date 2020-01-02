@@ -1,13 +1,10 @@
 using ArangoDB.Client;
+using AstArangoDbConnector;
 
 namespace AstArangoDbConnector.Syntax
 {
-    public class BaseSyntaxCollection
+    public class BaseSyntaxCollection : BaseEntity
     {
-
-        [DocumentProperty(Identifier = IdentifierType.Key)]
-        public string Key;
-
         public string Text { get; set; }
     }
 }

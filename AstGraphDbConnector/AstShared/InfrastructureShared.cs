@@ -13,7 +13,6 @@ namespace AstShared
         {
             var container = new Container();
 
-
             container.Configure(config =>
             {
                 // Register stuff in container, using the StructureMap APIs...

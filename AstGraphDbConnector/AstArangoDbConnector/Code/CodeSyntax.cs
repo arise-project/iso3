@@ -1,14 +1,11 @@
 using ArangoDB.Client;
 using Microsoft.CodeAnalysis;
+using AstArangoDbConnector;
 
 namespace AstArangoDbConnector.Syntax
 {
-    public class CodeSyntax
+    public class CodeSyntax : BaseEntity
     {
-
-        [DocumentProperty(Identifier = IdentifierType.Key)]
-        public string Key;
-
         public string Text { get; set; }
 
         public string TypeName { get; set; }
