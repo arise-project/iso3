@@ -4,6 +4,6 @@ namespace AstShared
 {
     public interface ISyntaxNodesToCollections
     {
-        void CreateTypesTree(Config config);
+        void Perform(Config config);
     }
 }

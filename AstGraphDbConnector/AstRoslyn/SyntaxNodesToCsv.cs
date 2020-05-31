@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 namespace AstRoslyn
 {
-    public class SyntaxNodesToClasses : ISyntaxNodesToClasses
+    public class SyntaxNodesToCsv : ISyntaxNodesToCsv
     {
-        ISyntaxGeneratorVisitor _syntaxGeneratorVisitor;
+        ISyntaxCsvVisitor _syntaxCsvVisitor;
 
-        public SyntaxNodesToClasses(ISyntaxGeneratorVisitor syntaxGeneratorVisitor)
+        public SyntaxNodesToCsv(ISyntaxCsvVisitor syntaxCsvVisitor)
         {
-            _syntaxGeneratorVisitor = syntaxGeneratorVisitor;
+            _syntaxCsvVisitor = syntaxCsvVisitor;
         }
 
         public void Perform(Config config)
@@ -37,7 +37,7 @@ namespace AstRoslyn
                 Console.WriteLine(t.Type.FullName);
                 var derived = DerivedClassSearchHelper.FindAllDerivedTypes(t.Type);
 
-                _syntaxGeneratorVisitor.Visit(config, t.Type);
+                _syntaxCsvVisitor.Visit(config, t.Type);
 
                 foreach (Type d in derived)
                 {

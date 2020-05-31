@@ -13,7 +13,7 @@ namespace AstArangoDbConnector
             Url = config.ArangoDbServer,
             Database = config.ArangoDbDatabse,
             Credential = new NetworkCredential(config.ArangoDbUser, config.ArangoDbPassword),
-            SystemDatabaseCredential = new NetworkCredential(config.ArangoDbUser, config.ArangoDbPassword),
+            SystemDatabaseCredential = new NetworkCredential(config.ArangoDbUser, config.ArangoDbPassword)
         });
     }
 }

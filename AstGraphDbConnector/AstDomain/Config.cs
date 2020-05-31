@@ -11,5 +11,9 @@
         public string ArangoDbPassword { get; set; }
 
         public string SyntaxCollectionClassesFolder { get; set; }
+
+        public string SyntaxCsvFile { get; set; }
+
+        public string SyntaxCsvHeader { get; set; }
     }
 }

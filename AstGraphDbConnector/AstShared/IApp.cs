@@ -17,5 +17,7 @@
         void CreateArangoDbSyntaxCollections();
 
         void AnalyseCSharpFile();
+
+        void GenSyntaxCsv();
     }
 }

@@ -76,15 +76,18 @@ namespace AstTests
 
         private static void ManageCommands(IApp app)
         {
-            Console.WriteLine("create-collections|create-collection-classes");
+            Console.WriteLine("gen-syntax-csv|create-collection-classes|create-collections");
             string commad = Console.ReadLine();
             switch (commad.Trim().ToLower())
             {
-                case "create-collections":
-                    app.CreateArangoDbSyntaxCollections();
+                case "gen-syntax-csv":
+                    app.GenSyntaxCsv();
                     break;
                 case "create-collection-classes":
                     app.CreateArangoDbSyntaxClasses();
+                    break;
+                case "create-collections":
+                    app.CreateArangoDbSyntaxCollections();
                     break;
             }
         }

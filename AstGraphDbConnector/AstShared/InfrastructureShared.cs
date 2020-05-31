@@ -22,13 +22,16 @@ namespace AstShared
                     _.WithDefaultConventions();
                     _.AddAllTypesOf<IBaseSyntaxVisitor>();
                     _.AddAllTypesOf<IClassGenerator>();
+                    _.AddAllTypesOf<ICsvGenerator>();
                     _.AddAllTypesOf<ICodeVisitor>();
                     _.AddAllTypesOf<IConcreteSyntaxVisitor>();
                     _.AddAllTypesOf<ISyntaxGeneratorVisitor>();
+                    _.AddAllTypesOf<ISyntaxCsvVisitor>();
                     _.AddAllTypesOf<ISyntaxWalker>();
                     _.AddAllTypesOf<IApp>();
                     _.AddAllTypesOf<ISyntaxNodesToClasses>();
                     _.AddAllTypesOf<ISyntaxNodesToCollections>();
+                    _.AddAllTypesOf<ISyntaxNodesToCsv>();
                     _.AddAllTypesOf<IArangoDbConnector>();
                     _.AddAllTypesOf<IConfigManager>();
                     _.AddAllTypesOf<IDatabaseManager>();

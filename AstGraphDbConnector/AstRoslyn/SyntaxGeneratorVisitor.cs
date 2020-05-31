@@ -12,7 +12,11 @@ namespace AstRoslyn
         {
             _classGenerator.CreateClassInFolder(
                 config.SyntaxCollectionClassesFolder,
-                t.FullName.Replace("Microsoft.CodeAnalysis.CSharp.", "").Replace("Microsoft.CodeAnalysis.", "").Replace(".", "Dot"),
+                t.FullName
+                .Replace("Microsoft.CodeAnalysis.CSharp.", "")
+                .Replace("Microsoft.CodeAnalysis.", "")
+                .Replace(".", "Dot")
+                .Replace("SyntaxDot", ""),
                 "BaseSyntaxCollection",
                 "AstArangoDbConnector.Syntax");
         }

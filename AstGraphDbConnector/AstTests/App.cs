@@ -3,7 +3,9 @@ using AstShared;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using YamlDotNet.Serialization;
 
 namespace AstTests
@@ -14,6 +16,7 @@ namespace AstTests
 
         private readonly ISyntaxNodesToClasses _syntaxNodesToClasses;
         private readonly ISyntaxNodesToCollections _syntaxNodesToCollections;
+        private readonly ISyntaxNodesToCsv _syntaxNodesToCsv;
         private readonly ICodeVisitor _codeVisitor;
         private readonly IConfigManager _configManager;
         private readonly ISyntaxWalker _syntaxWalker;
@@ -22,6 +25,7 @@ namespace AstTests
         public App(
             ISyntaxNodesToClasses syntaxNodesToClasse, 
             ISyntaxNodesToCollections syntaxNodesToCollections, 
+            ISyntaxNodesToCsv syntaxNodesToCsv,
             ICodeVisitor codeVisitor,
             IConfigManager configManager,
             ISyntaxWalker syntaxWalker,
@@ -29,6 +33,7 @@ namespace AstTests
         {
             _syntaxNodesToClasses = syntaxNodesToClasse;
             _syntaxNodesToCollections = syntaxNodesToCollections;
+            _syntaxNodesToCsv = syntaxNodesToCsv;
             _codeVisitor = codeVisitor;
             _configManager = configManager;
             _syntaxWalker = syntaxWalker;
@@ -95,23 +100,24 @@ namespace AstTests
         {
             Config c = _configManager.ReadConfig(ConfigPath);
 
-            Console.WriteLine("Destination folder:");
-            c.SyntaxCollectionClassesFolder = Console.ReadLine();
+            c.SyntaxCollectionClassesFolder = Path.Combine(Environment.CurrentDirectory, "../AstArangoDbConnector/SyntaxCollections");
+            Console.WriteLine($"Destination folder: {c.SyntaxCollectionClassesFolder}");
 
-            if(Directory.Exists(c.SyntaxCollectionClassesFolder))
+            if(!Directory.Exists(c.SyntaxCollectionClassesFolder))
             {
                 Console.WriteLine("NOT FOUND");
                 return;
             }
 
-            _syntaxNodesToClasses.CreateTypesTree(c);
+            _syntaxNodesToClasses.Perform(c);
+            _configManager.WriteConfig(c, ConfigPath);
         }
 
         public void CreateArangoDbSyntaxCollections()
         {
             Config c = _configManager.ReadConfig(ConfigPath);
 
-            _syntaxNodesToCollections.CreateTypesTree(c);
+            _syntaxNodesToCollections.Perform(c);
         }
 
         public void AnalyseCSharpFile()
@@ -124,6 +130,44 @@ namespace AstTests
             SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
             var root = tree.GetCompilationUnitRoot();
             _syntaxWalker.Visit(c, root);
+        }
+
+        public void GenSyntaxCsv()
+        {
+            Config c = _configManager.ReadConfig(ConfigPath);
+            
+            c.SyntaxCsvFile = Path.Combine(Environment.CurrentDirectory, "../AstRoslyn/SyntaxCollections/predefined_syntax.csv");
+
+            if(!Directory.Exists(Path.GetDirectoryName(c.SyntaxCsvFile)))
+            {
+                Console.WriteLine($"ERROR: Directory not exists for {c.SyntaxCsvFile}");
+                return;
+            }
+
+            c.SyntaxCsvHeader = string.Empty;
+
+            if(File.Exists(c.SyntaxCsvFile))
+            {
+                Console.Write("Extend (y/n)?");
+                if(Console.ReadKey().Key != ConsoleKey.Y) 
+                {
+                    Console.WriteLine($"ERROR: File exists {c.SyntaxCsvFile}");
+                    return;
+                }
+                c.SyntaxCsvHeader = File.ReadLines(c.SyntaxCsvFile).First();
+                Console.Write("Header extend:");
+                string extend = Console.ReadLine();
+                c.SyntaxCsvHeader += "," + extend;
+            }
+            else
+            {
+                Console.Write("Header:");
+                c.SyntaxCsvHeader = Console.ReadLine();
+                File.WriteAllLines(c.SyntaxCsvFile, new List<string> { c.SyntaxCsvHeader });
+            }
+
+            _syntaxNodesToCsv.Perform(c);
+            _configManager.WriteConfig(c, ConfigPath);
         }
     }
 }

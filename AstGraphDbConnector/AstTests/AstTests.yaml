@@ -1,4 +1,6 @@
 ArangoDbServer: http://localhost:8529
-ArangoDbDatabse: test1
+ArangoDbDatabse: test
 ArangoDbUser: root
 ArangoDbPassword: 12345
+SyntaxCsvFile: /home/eugene/Projects/iso3/AstGraphDbConnector/AstTests/../AstRoslyn/SyntaxCollections/predefined_syntax.csv
+SyntaxCsvHeader: type	is_occured	is_structure	is_behavior
