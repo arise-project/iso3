@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace AstArangoDbConnector
 {
-    public class CodeSyntaxRepository : AstConnector, IRepository<CodeSyntaxEntity>
+    public class CodeSyntaxRepository : ArangoDbConnector, IRepository<CodeSyntaxEntity>
     {
         private readonly IMapper _mapper;
         private Config _config;
@@ -43,7 +43,7 @@ namespace AstArangoDbConnector
         public void Create(CodeSyntaxEntity codeEntity)
         {
             var code = _mapper.Map<CodeSyntax>(codeEntity);
-            using (var db = CreateDatabase(_config))
+            using (var db = GetDatabase(_config))
             {
                 //error codes https://docs.arangodb.com/3.3/Manual/Appendix/ErrorCodes.html
                 string name = code.TypeName.Replace("Microsoft.CodeAnalysis.CSharp.", "").Replace("Microsoft.CodeAnalysis.", "").Replace(".", "Dot");

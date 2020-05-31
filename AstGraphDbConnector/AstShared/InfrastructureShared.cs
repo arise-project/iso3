@@ -29,8 +29,9 @@ namespace AstShared
                     _.AddAllTypesOf<IApp>();
                     _.AddAllTypesOf<ISyntaxNodesToClasses>();
                     _.AddAllTypesOf<ISyntaxNodesToCollections>();
-                    _.AddAllTypesOf<IAstConnector>();
-                    _.AddAllTypesOf<IConnectionFactory>();
+                    _.AddAllTypesOf<IArangoDbConnector>();
+                    _.AddAllTypesOf<IConfigManager>();
+                    _.AddAllTypesOf<IDatabaseManager>();
                     _.AddAllTypesOf<IRepository<SyntaxCoollectionEntity>>();
                     _.AddAllTypesOf<IRepository<CodeSyntaxEntity>>();
                     _.AddAllTypesOf<IRepository<BaseSyntaxEntity>>();

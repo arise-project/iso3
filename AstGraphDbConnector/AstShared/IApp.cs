@@ -6,6 +6,12 @@
 
         void PrintConfig();
 
+        void CreateDatabase();
+
+        void DatabaseStatistics();
+
+        void DeleteDatabase();
+
         void CreateArangoDbSyntaxClasses();
 
         void CreateArangoDbSyntaxCollections();

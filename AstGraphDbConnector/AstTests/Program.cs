@@ -51,10 +51,13 @@ namespace AstTests
                     app.ConfigureArabgoDbDatabase();
                     break;
                 case "create":
+                    app.CreateDatabase();
                     break;
                 case "statistics":
+                    app.DatabaseStatistics();
                     break;
                 case "delete":
+                    app.DeleteDatabase();
                     break;
             }
         }

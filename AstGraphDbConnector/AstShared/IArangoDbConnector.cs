@@ -2,7 +2,7 @@ using AstDomain;
 
 namespace AstShared
 {
-    public interface IAstConnector
+    public interface IArangoDbConnector
     {
     }
 }

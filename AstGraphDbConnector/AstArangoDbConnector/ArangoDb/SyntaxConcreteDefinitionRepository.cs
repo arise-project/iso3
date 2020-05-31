@@ -3,14 +3,12 @@ using AstArangoDbConnector.Syntax;
 using AstDomain;
 using AstShared;
 using AutoMapper;
-using System;
 using System.Linq;
-using System.Reflection;
 using System.Collections.Generic;
 
 namespace AstArangoDbConnector
 {
-    public class SyntaxConcreteDefinitionRepository : AstConnector, IRepository<ConcreteSyntaxEntity>
+    public class SyntaxConcreteDefinitionRepository : ArangoDbConnector, IRepository<ConcreteSyntaxEntity>
     {
         private readonly IMapper _mapper;
         private Config _config;
@@ -43,7 +41,7 @@ namespace AstArangoDbConnector
         public void Create(ConcreteSyntaxEntity syntaxEntity)
         {
             var syntax = _mapper.Map<ConcreteSyntax>(syntaxEntity);
-            using (var db = CreateDatabase(_config))
+            using (var db = GetDatabase(_config))
             {
                 if (!db.ListCollections().Any(c => c.Name == "ConcreteSyntax"))
                 {

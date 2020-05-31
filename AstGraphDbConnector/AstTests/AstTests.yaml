@@ -1,0 +1,4 @@
+ArangoDbServer: http://localhost:8529
+ArangoDbDatabse: test1
+ArangoDbUser: root
+ArangoDbPassword: 12345
