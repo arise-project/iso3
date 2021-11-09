@@ -10,3 +10,5 @@
 [Создаём личный «Архив интернета»](https://habr.com/ru/company/first/blog/584838/)
 
 [Извлекаем суть новости. Опыт Яндекса](https://habr.com/ru/company/yandex/blog/586634/)
+
+[Computation graphs and graph computation](https://breandan.net/2020/06/30/graph-computation/)
