@@ -12,3 +12,5 @@
 [Извлекаем суть новости. Опыт Яндекса](https://habr.com/ru/company/yandex/blog/586634/)
 
 [Computation graphs and graph computation](https://breandan.net/2020/06/30/graph-computation/)
+
+[Юлий Цезарь в мире ИИ:  Google разрабатывает многозадачную ИИ-модель Pathways](https://habr.com/ru/company/neuronet/blog/587668/)
