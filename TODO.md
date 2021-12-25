@@ -14,3 +14,5 @@
 [Computation graphs and graph computation](https://breandan.net/2020/06/30/graph-computation/)
 
 [Юлий Цезарь в мире ИИ:  Google разрабатывает многозадачную ИИ-модель Pathways](https://habr.com/ru/company/neuronet/blog/587668/)
+
+[AST diff](https://github.com/afnanenayet/diffsitter)
