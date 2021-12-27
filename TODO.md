@@ -16,3 +16,4 @@
 [Юлий Цезарь в мире ИИ:  Google разрабатывает многозадачную ИИ-модель Pathways](https://habr.com/ru/company/neuronet/blog/587668/)
 
 [Introducing TensorFlow Graph Neural Networks](https://blog.tensorflow.org/2021/11/introducing-tensorflow-gnn.html)
+[AST diff](https://github.com/afnanenayet/diffsitter)
