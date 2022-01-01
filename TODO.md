@@ -17,3 +17,4 @@
 
 [Introducing TensorFlow Graph Neural Networks](https://blog.tensorflow.org/2021/11/introducing-tensorflow-gnn.html)
 [AST diff](https://github.com/afnanenayet/diffsitter)
+[Paxos](https://lamport.azurewebsites.net/pubs/pubs.html)
