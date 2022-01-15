@@ -19,3 +19,11 @@
 [AST diff](https://github.com/afnanenayet/diffsitter)
 [Paxos](https://lamport.azurewebsites.net/pubs/pubs.html)
 [The open database with temporal graph query]https://xtdb.com/
+
+https://github.com/HouQiming/ama
+
+[Paxos](https://martinfowler.com/articles/patterns-of-distributed-systems/paxos.html)
+
+[My Writings Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
+
+[Как работает DeepMind AlphaFold2?](https://habr.com/ru/post/599703/)
