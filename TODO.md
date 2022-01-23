@@ -27,3 +27,5 @@ https://github.com/HouQiming/ama
 [My Writings Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
 
 [Как работает DeepMind AlphaFold2?](https://habr.com/ru/post/599703/)
+
+[How do you visualize code?](https://alexanderell.is/posts/visualizing-code/)
