@@ -29,3 +29,7 @@ https://github.com/HouQiming/ama
 [Как работает DeepMind AlphaFold2?](https://habr.com/ru/post/599703/)
 
 [How do you visualize code?](https://alexanderell.is/posts/visualizing-code/)
+
+[Researchers Build AI That Builds AI](https://www.quantamagazine.org/researchers-build-ai-that-builds-ai-20220125/)
+
+[Categorical Databases](https://www.categoricaldata.net/index.php)
