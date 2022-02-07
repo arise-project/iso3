@@ -33,3 +33,5 @@ https://github.com/HouQiming/ama
 [Researchers Build AI That Builds AI](https://www.quantamagazine.org/researchers-build-ai-that-builds-ai-20220125/)
 
 [Categorical Databases](https://www.categoricaldata.net/index.php)
+
+https://deepmind.com/blog/article/Competitive-programming-with-AlphaCode
