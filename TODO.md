@@ -35,3 +35,5 @@ https://github.com/HouQiming/ama
 [Categorical Databases](https://www.categoricaldata.net/index.php)
 
 https://deepmind.com/blog/article/Competitive-programming-with-AlphaCode
+
+https://news.ycombinator.com/item?id=30819579
