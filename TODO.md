@@ -39,3 +39,5 @@ https://deepmind.com/blog/article/Competitive-programming-with-AlphaCode
 https://news.ycombinator.com/item?id=30819579
 
 [AST Diff](https://github.com/Wilfred/difftastic)
+
+[Bash AST Parser](https://github.com/colis-anr/morbig)(https://manpages.debian.org/unstable/morbig/morbig.1.en.html)
