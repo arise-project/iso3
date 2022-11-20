@@ -43,3 +43,7 @@ https://news.ycombinator.com/item?id=30819579
 [Bash AST Parser](https://github.com/colis-anr/morbig)(https://manpages.debian.org/unstable/morbig/morbig.1.en.html)
 
 [Overwatch: Learning Patterns in Code Edit Sequences] (https://arxiv.org/abs/2207.12456)
+
+[Principal Component Analysis](https://setosa.io/ev/principal-component-analysis/)
+Principal component analysis (PCA) is a technique used to emphasize variation and bring out strong patterns in a dataset. It's often used to make data easy to explore and visualize.
+
