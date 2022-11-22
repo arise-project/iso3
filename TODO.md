@@ -1,6 +1,7 @@
 [Релиз LeoCAD 21.06](https://www.linux.org.ru/news/opensource/17033688)
 LeoCAD — 3D-САПР для конструирования виртуальных моделей LEGO с использованием блоков из LDraw’s Parts Library. Программа написана на C++ с Qt5 и Qt4.
 
+[We're building a new search engine from scratch, using the same ideas behind DALL-E and Stable Diffusion. It understands language — in the form of prompts — so you can say what you're looking for in all the expressive and creative ways you can think of. And, if we're lucky, it might make the internet feel a little less like a wall of ads.](https://metaphor.systems/)
 
 [Distributed protocol underpinning cloud computing automatically determined safe and secure](https://news.umich.edu/distributed-protocol-underpinning-cloud-computing-automatically-determined-safe-and-secure/)
 
