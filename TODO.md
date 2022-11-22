@@ -1,3 +1,7 @@
+[Релиз LeoCAD 21.06](https://www.linux.org.ru/news/opensource/17033688)
+LeoCAD — 3D-САПР для конструирования виртуальных моделей LEGO с использованием блоков из LDraw’s Parts Library. Программа написана на C++ с Qt5 и Qt4.
+
+
 [Distributed protocol underpinning cloud computing automatically determined safe and secure](https://news.umich.edu/distributed-protocol-underpinning-cloud-computing-automatically-determined-safe-and-secure/)
 
 
