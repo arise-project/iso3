@@ -1,5 +1,10 @@
 [Git Notes: Git's Coolest, Most Unloved­ Feature](https://tylercipriani.com/blog/2022/11/19/git-notes-gits-coolest-most-unloved-feature/)
 
+[Релиз LeoCAD 21.06](https://www.linux.org.ru/news/opensource/17033688)
+LeoCAD — 3D-САПР для конструирования виртуальных моделей LEGO с использованием блоков из LDraw’s Parts Library. Программа написана на C++ с Qt5 и Qt4.
+
+[We're building a new search engine from scratch, using the same ideas behind DALL-E and Stable Diffusion. It understands language — in the form of prompts — so you can say what you're looking for in all the expressive and creative ways you can think of. And, if we're lucky, it might make the internet feel a little less like a wall of ads.](https://metaphor.systems/)
+
 [Distributed protocol underpinning cloud computing automatically determined safe and secure](https://news.umich.edu/distributed-protocol-underpinning-cloud-computing-automatically-determined-safe-and-secure/)
 
 
@@ -45,3 +50,7 @@ https://news.ycombinator.com/item?id=30819579
 [Bash AST Parser](https://github.com/colis-anr/morbig)(https://manpages.debian.org/unstable/morbig/morbig.1.en.html)
 
 [Overwatch: Learning Patterns in Code Edit Sequences] (https://arxiv.org/abs/2207.12456)
+
+[Principal Component Analysis](https://setosa.io/ev/principal-component-analysis/)
+Principal component analysis (PCA) is a technique used to emphasize variation and bring out strong patterns in a dataset. It's often used to make data easy to explore and visualize.
+
