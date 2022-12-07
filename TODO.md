@@ -1,3 +1,11 @@
+========
+arise projects:
+https://github.com/ARISE-Initiative
+https://github.com/arisetransfer
+https://github.com/ARiSE-Lab
+========
+[Generate Webservice Code](https://www.autocodegen.com/)
+[flex transpliter](https://github.com/Flex-lang/transpiler)
 [Git Notes: Git's Coolest, Most Unloved­ Feature](https://tylercipriani.com/blog/2022/11/19/git-notes-gits-coolest-most-unloved-feature/)
 
 [Релиз LeoCAD 21.06](https://www.linux.org.ru/news/opensource/17033688)
