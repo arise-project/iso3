@@ -1,3 +1,6 @@
+[quine](https://github.com/thatdot/quine)
+Quine is a streaming graph interpreter; a server-side program that consumes data, builds it into a stateful graph structure, and runs live computation on that graph to answer questions or compute results. Those results stream out in real-time.
+https://www.thatdot.com/
 --------
 [category topology](https://topology.mitpress.mit.edu/)
 ========
