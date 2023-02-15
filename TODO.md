@@ -1,3 +1,6 @@
+[ChatGPT Hardware a Look at 8x NVIDIA A100 Powering the Tool](https://www.servethehome.com/chatgpt-hardware-a-look-at-8x-nvidia-a100-systems-powering-the-tool-openai-microsoft-azure-supermicro-inspur-asus-dell-gigabyte/)
+[Geogram is a programming library with geometric algorithms](https://github.com/BrunoLevy/geogram)
+[How to Train Really Large Models on Many GPUs?](https://lilianweng.github.io/posts/2021-09-25-train-large/)
 [quine](https://github.com/thatdot/quine)
 Quine is a streaming graph interpreter; a server-side program that consumes data, builds it into a stateful graph structure, and runs live computation on that graph to answer questions or compute results. Those results stream out in real-time.
 https://www.thatdot.com/
