@@ -15,3 +15,6 @@ arangodb
 127.0.0.1:8529
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/epirogov)
+
+[Computer Scientists Inch Closer to Major Algorithmic Goal]
+(https://www.quantamagazine.org/computer-scientists-inch-closer-to-major-algorithmic-goal-20230623/)
