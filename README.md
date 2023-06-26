@@ -18,3 +18,26 @@ arangodb
 
 [Computer Scientists Inch Closer to Major Algorithmic Goal]
 (https://www.quantamagazine.org/computer-scientists-inch-closer-to-major-algorithmic-goal-20230623/)
+
+
+Vector Database for LLM applications
+There are many options out there:
+- FAISS
+
+- Pinecone
+
+- Milvus
+
+- Qdrant
+
+- Weaviate
+
+- Elasticsearch
+
+- Vespa
+
+- pgvector
+
+- ScaNN
+
+- Vald
